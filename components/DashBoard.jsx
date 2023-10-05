@@ -20,7 +20,7 @@ function DashBoard() {
       <div className='dashboardlinks'>
         <div className='btn'> View Cart </div>
         {!user && <div onClick={handleLogin} className='btn'> Login </div>}
-        <UserLogoDropDown />
+        <div className='btn'><UserLogoDropDown /></div>
       </div>
     </div>
   )
