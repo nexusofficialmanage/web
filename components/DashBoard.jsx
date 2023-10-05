@@ -2,21 +2,25 @@
 
 import React from 'react'
 import './DashBoard.css'
-import Link from 'next/link';
 import { useUser } from '@auth0/nextjs-auth0/client';
-import { BiUserCircle } from "react-icons/lia";
+import UserLogoDropDown from './UserLogoDropDown';
+import { useRouter } from 'next/navigation';
 
 function DashBoard() {
-
   const { user, error, isLoading } = useUser();
+  const router = useRouter();
+
+  const handleLogin = () => {
+    router.push("/api/auth/login")
+  }
 
   return (
     <div className='dashboard'>
       <div className='companyname btn'> Nexus </div>
       <div className='dashboardlinks'>
         <div className='btn'> View Cart </div>
-        <Link href='/api/auth/login' className='btn'> Login </Link>
-        {user ?  <img src={user.picture} alt='user-img' className='userlogo'/> : <></>}
+        {!user && <div onClick={handleLogin} className='btn'> Login </div>}
+        <UserLogoDropDown />
       </div>
     </div>
   )
