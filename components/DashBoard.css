@@ -1,0 +1,32 @@
+.dashboard{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.companyname{
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.dashboardlinks{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 40%;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: black;
+}
+
+.btn:hover{
+    cursor: pointer;
+}
+
+.userlogo{
+    width: 40px;
+    border-radius: 40px;
+}
