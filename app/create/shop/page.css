@@ -1,0 +1,34 @@
+body{
+    padding: 0px;
+    margin: 0px;
+}
+
+.shopinformation{
+    background-color: #D5B9FA;
+    opacity: 0.8;
+}
+
+.shopinformationinput{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.inpt{
+    padding: 6px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 0.2px solid black;
+    width: 300px;
+}
+
+.btn{
+    font-size: 24px;
+    margin-left: 10px;;
+}
+
+.addoninput{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
