@@ -1,10 +1,9 @@
 'use client';
-
-import React from 'react'
 import './DashBoard.css'
 import { useUser } from '@auth0/nextjs-auth0/client';
 import UserLogoDropDown from './UserLogoDropDown';
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 function DashBoard() {
   const { user, error, isLoading } = useUser();
@@ -13,6 +12,10 @@ function DashBoard() {
   const handleLogin = () => {
     router.push("/api/auth/login")
   }
+
+  useEffect(() => {
+    console.log(user?.sub);
+  })
 
   return (
     <div className='dashboard'>
