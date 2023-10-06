@@ -1,32 +1,23 @@
 'use client';
-import './DashBoard.css'
-import { useUser } from '@auth0/nextjs-auth0/client';
+
+import React from 'react'
+import Link from 'next/link';
 import UserLogoDropDown from './UserLogoDropDown';
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import 'tailwindcss/tailwind.css';
 
 function DashBoard() {
-  const { user, error, isLoading } = useUser();
-  const router = useRouter();
-
-  const handleLogin = () => {
-    router.push("/api/auth/login")
-  }
-
-  useEffect(() => {
-    console.log(user?.sub);
-  })
-
   return (
-    <div className='dashboard'>
-      <div className='companyname btn'> Nexus </div>
-      <div className='dashboardlinks'>
-        <div className='btn'> View Cart </div>
-        {!user && <div onClick={handleLogin} className='btn'> Login </div>}
-        <div className='btn'><UserLogoDropDown /></div>
+    <div className='flex flex-column justify-between border border-black p-2'>
+      <div className='text-2xl font-bold companyname'>
+        Nexus
+      </div>
+      <div className='flex flex-row items-center text-lg font-bold text-black dashboardlinks'>
+        <div className='btn mr-4'>View Cart</div>
+        <Link href='/api/auth/login' className='btn mr-4'>Login</Link>
+        <UserLogoDropDown className='userlogo' />
       </div>
     </div>
-  )
+  );
 }
 
-export default DashBoard
+export default DashBoard;

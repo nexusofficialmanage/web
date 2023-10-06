@@ -41,6 +41,7 @@ export default function UserLogoDropDown() {
   return (
     <Dropdown>
       <DropdownTrigger>
+        
         <img src={user ? user.picture : '/assests/images/userlogopic.png'} alt='user-img' className='userlogo' />
       </DropdownTrigger>
       <DropdownMenu aria-label="Dynamic Actions">
