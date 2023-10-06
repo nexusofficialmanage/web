@@ -4,6 +4,8 @@ body{
 }
 
 .shopinformation{
+    display: flex;
+    flex-direction: row;
     background-color: #D5B9FA;
     opacity: 0.8;
 }
@@ -12,6 +14,7 @@ body{
     display: flex;
     flex-direction: column;
     width: 50%;
+    margin: 20px;
 }
 
 .inpt{
@@ -19,7 +22,11 @@ body{
     margin: 10px;
     border-radius: 5px;
     border: 0.2px solid black;
-    width: 300px;
+    /* width: 300px; */
+}
+
+.textbox{
+    height: 70px;
 }
 
 .btn{
@@ -31,4 +38,14 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.imagealternator{
+    margin: 20px;
+    width: 50%;
+}
+
+.imagealternator img{
+    height: 500px;
+    border-radius: 8px;;
 }
