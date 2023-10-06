@@ -2,8 +2,8 @@ import { Schema, model, models } from 'mongoose';
 
 const ShopSchema = new Schema({
     owner: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
+        type: String,
+        unique: [true, 'id already exists'],
     },
     shopId: {
         type: String,
