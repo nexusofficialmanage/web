@@ -1,4 +1,4 @@
-import Shop from "@models/shop";
+import User from "@models/user";
 import { connectToDB } from "@utils/database";
 
 export const POST = async (request) => {
@@ -10,15 +10,15 @@ export const POST = async (request) => {
 
     try {
         await connectToDB();
-        const newShop = new Shop({ 
+        const newUser = new User({ 
             userId, 
             email, 
             username,
             image,
         });
 
-        await newShop.save();
-        return new Response(JSON.stringify(newShop), { status: 201 })
+        await newUser.save();
+        return new Response(JSON.stringify(newUser), { status: 201 })
     } catch (error) {
         return new Response("Failed to create a new prompt", { status: 500 });
     }
