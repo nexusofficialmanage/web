@@ -5,6 +5,10 @@ const ShopSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User',
     },
+    shopId: {
+        type: String,
+        unique: [true, "id already exists"],
+    },
     shopName: {
         type: String,
         required: [true, 'Shop name is required'],
@@ -14,8 +18,8 @@ const ShopSchema = new Schema({
         required: [true, 'Address line is required'],
     },
     description: String,
-    phoneNumber: {
-        type: String,
+    phoneNumbers: {
+        type: [String],
         required: [true, 'Phone number is required'],
     },
     emailId: {
