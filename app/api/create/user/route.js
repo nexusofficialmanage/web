@@ -4,6 +4,7 @@ import { connectToDB } from "@utils/database";
 export const POST = async (request) => {
     const { userId, 
             email, 
+            password,
             username,
             image,
         } = await request.json();
@@ -13,6 +14,7 @@ export const POST = async (request) => {
         const newUser = new User({ 
             userId, 
             email, 
+            password,
             username,
             image,
         });
