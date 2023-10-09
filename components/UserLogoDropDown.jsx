@@ -1,6 +1,7 @@
 import { useUser } from '@auth0/nextjs-auth0/client';
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@nextui-org/react";
 import { useRouter } from 'next/navigation';
+import './UserLogoDropDown.css'
 
 export default function UserLogoDropDown() {
   const { user, error, isLoading } = useUser();
@@ -17,8 +18,8 @@ export default function UserLogoDropDown() {
 
   const items = [
     {
-      key: "new",
-      label: "New file",
+      key: "Profile",
+      label: "View Profile",
       onClick: "",
     },
     {
@@ -39,14 +40,13 @@ export default function UserLogoDropDown() {
   ];
 
   return (
-    <Dropdown>
+    <Dropdown className='dropdown'>
       <DropdownTrigger>
-        
         <img src={user ? user.picture : '/assests/images/userlogopic.png'} alt='user-img' className='userlogo' />
       </DropdownTrigger>
       <DropdownMenu aria-label="Dynamic Actions">
         {items.map((item) => (
-          <DropdownItem key={item.key} onClick={item.onClick}>
+          <DropdownItem key={item.key} onClick={item.onClick} className='dropdownitem'>
             {item.label}
           </DropdownItem>
         ))}

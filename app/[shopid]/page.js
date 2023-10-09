@@ -1,6 +1,8 @@
 'use client'
+import '../globals.css'
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from "next/navigation";
+import DashBoard from '@/components/DashBoard';
 
 function page() {
     const searchParams = useSearchParams();
@@ -19,6 +21,7 @@ function page() {
 
   return (
     <div>
+      <DashBoard />
       
     </div>
   )

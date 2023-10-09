@@ -1,0 +1,16 @@
+
+.mobilenavbar{
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    height: 70px;
+    bottom: 0px;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px;
+}
+
+.icn{
+    font-size: 40px;
+}
