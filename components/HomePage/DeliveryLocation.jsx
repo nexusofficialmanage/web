@@ -25,7 +25,7 @@ function DeliveryLocation() {
     <div className="suggestions-container">
       <input
         className="input-field"
-        placeholder="Enter location"
+        placeholder="Enter your location"
         onChange={(e) => {
           setInputValue(e.target.value);
           getSuggestions(e.target.value);

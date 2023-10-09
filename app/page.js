@@ -1,12 +1,12 @@
 import DashBoard from "../components/DashBoard";
-import DeliveryLocation from "../components/HomePage/DeliveryLocation";
+import Home from "../components/HomePage/Home";
 import './globals.css'
 
-export default function Home() {
+export default function App() {
   return (
     <div>
       <DashBoard />
-      <DeliveryLocation />
+      <Home/>
     </div>
   );
 }
