@@ -1,14 +1,15 @@
 
 .mobilenavbar{
-    position: absolute;
+    position: fixed;
     display: flex;
     flex-direction: row;
     height: 70px;
-    bottom: 0px;
+    bottom: 0;
     align-items: center;
     justify-content: space-between;
     width: 100%;
     padding: 20px;
+    backdrop-filter: blur(8px);
 }
 
 .icn{

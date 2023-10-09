@@ -75,7 +75,6 @@ function Page() {
   return (
     <div>
       <div className='bannercreateshop'>
-
       </div>
       <div className='shopinformation'>
       <div className='imagealternator'>
@@ -89,12 +88,6 @@ function Page() {
             // onClick={() => changeImage(index)}
             />
           )}
-
-          <div className='shop-icon-container'>
-            <div className='shop-icon'>
-              <img src={imagecirlceicon} alt="Shop Icon" />
-            </div>
-          </div>
 
           <input
             type="file"
@@ -177,12 +170,12 @@ function Page() {
                 {index > 0 && (
                   <AiOutlineMinusCircle
                     onClick={() => removePhoneNumberInput(index)}
-                    className='btn'
+                    className='btncreate'
                   />
                 )}
               </div>
             ))}
-            <AiFillPlusCircle onClick={addPhoneNumberInput} className='btn' />
+            <AiFillPlusCircle onClick={addPhoneNumberInput} className='btncreate' />
           </div>
         </div>
       </div>

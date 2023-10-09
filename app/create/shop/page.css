@@ -34,7 +34,7 @@ body{
     height: 70px;
 }
 
-.btn{
+.btncreate{
     font-size: 24px;
     margin-left: 10px;;
 }
@@ -55,9 +55,15 @@ body{
 }
 
 .imagealternator img{
-    width: 80%;
+    width: 60%;
     height: 90%;
     border-radius: 8px;
+}
+
+@media only screen and (max-width: 768px) {
+    .imagealternator{
+        height: 300px;
+    }
 }
 
 .shop-icon-container {
@@ -74,4 +80,3 @@ body{
     width: 40%;
     border-radius: 100%
 }
-  
