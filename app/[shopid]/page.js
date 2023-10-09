@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react'
 import { useSearchParams } from "next/navigation";
 import './page.css'
 import { CiLocationOn } from 'react-icons/Ci';
+import {Popover, PopoverTrigger, PopoverContent, Button} from "@nextui-org/react";
+
 
 function page() {
     const searchParams = useSearchParams();
@@ -67,6 +69,7 @@ function page() {
             )}
           </div>
           <div className='bannersectionsubsection'>
+            
             <div className='shopdescription'>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
               Quisque fringilla bibendum justo, ac luctus ante placerat a. 
@@ -76,6 +79,7 @@ function page() {
               <div>Email ID: jeevanalexenkavalam@gmail.com</div>
               <div>Phone number: 8921655405</div>
             </div>
+            
           </div>
       </div>
     </div>

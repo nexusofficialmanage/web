@@ -12,13 +12,15 @@
     margin: 10px;
 }
 
+.shortdescription{
+    width: 500px;
+}
+
 .imagealternator{
     display: flex;
     flex-direction: column;
     width: 60%;
     height: 400px;
-    align-items: center;
-    justify-content: center;
 }
 
 .imagealternator img{
@@ -62,8 +64,8 @@
 }
 
 .bannersectionsubsection{
-    margin: 10px;
     width: 40%;
+    margin-left: 15px;
 }
 
 .shopdescription{
@@ -121,6 +123,7 @@
 
     .bannersectionsubsection{
         width: 100%;
+        margin: 0;
     }
 }
 
@@ -145,5 +148,6 @@
 
     .bannersectionsubsection{
         width: 100%;
+        margin: 0;
     }
 }
