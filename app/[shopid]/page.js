@@ -49,9 +49,9 @@ function page() {
             <div>Shop Location</div>
           </div>
         </div>
-        <div className='shopmaininfosecondsection'>
+        {/* <div className='shopmaininfosecondsection'>
 
-        </div>
+        </div> */}
       </div>
       <div className='bannersection'>
         <div className='imagealternator'>
@@ -71,7 +71,6 @@ function page() {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
               Quisque fringilla bibendum justo, ac luctus ante placerat a. 
               Duis id facilisis velit, vel placerat ipsum. Maecenas molestie ullamcorper ex, in venenatis odio. 
-              
             </div>
             <div className='contactdetails'>
               <div>Email ID: jeevanalexenkavalam@gmail.com</div>

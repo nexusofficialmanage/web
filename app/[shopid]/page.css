@@ -9,7 +9,7 @@
     display: flex;
     flex-direction: row;
     width: 100%;
-    padding: 10px;
+    margin: 10px;
 }
 
 .imagealternator{
@@ -17,6 +17,8 @@
     flex-direction: column;
     width: 60%;
     height: 400px;
+    align-items: center;
+    justify-content: center;
 }
 
 .imagealternator img{

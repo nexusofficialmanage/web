@@ -13,13 +13,17 @@ function DashBoard() {
     router.push("/api/auth/login")
   }
 
+  const handleGotoHome = () => {
+    router.push("/");
+  }
+
   useEffect(() => {
     console.log(user?.sub);
   })
 
   return (
     <div className='dashboard'>
-      <div className='companyname btn'> Nexus </div>
+      <div className='companyname btn' onClick={handleGotoHome}> Nexus </div>
       <div className='dashboardlinks'>
         <div className='btn'> View Cart </div>
         {!user && <div onClick={handleLogin} className='btn'> Login </div>}
