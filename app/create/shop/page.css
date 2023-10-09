@@ -3,9 +3,15 @@ body{
     margin: 0px;
 }
 
+.bannercreateshop{
+    height: 100px;
+    background-color: black;
+    opacity: 0.85;
+}
+
 .shopinformation{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     background-color: #D5B9FA;
     opacity: 0.8;
 }
@@ -13,7 +19,6 @@ body{
 .shopinformationinput{
     display: flex;
     flex-direction: column;
-    width: 50%;
     margin: 20px;
 }
 
@@ -29,23 +34,49 @@ body{
     height: 70px;
 }
 
-.btn{
+.btncreate{
     font-size: 24px;
     margin-left: 10px;;
 }
 
 .addoninput{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    align-items: center;
 }
 
 .imagealternator{
-    margin: 20px;
-    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 400px;
 }
 
 .imagealternator img{
-    height: 500px;
-    border-radius: 8px;;
+    width: 60%;
+    height: 90%;
+    border-radius: 8px;
+}
+
+@media only screen and (max-width: 768px) {
+    .imagealternator{
+        height: 300px;
+    }
+}
+
+.shop-icon-container {
+    position: relative;
+}
+  
+.shop-icon {
+    position: absolute;
+    top: -80px;
+    left: -500px; 
+}
+
+.shop-icon img {
+    width: 40%;
+    border-radius: 100%
 }

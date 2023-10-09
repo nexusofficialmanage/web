@@ -1,0 +1,147 @@
+.shoppage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.bannersection{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 10px;
+}
+
+.imagealternator{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: 400px;
+}
+
+.imagealternator img{
+    width: 100%;
+    height: 90%;
+    border-radius: 8px;
+}
+
+.shopmaininfo{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.shopmaininfofirstsection{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    padding: 10px;
+    width: 30%;
+    background-color: whitesmoke;
+    align-items: flex-start;
+}
+
+.shopmaininfosecondsection{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    background-color: whitesmoke;
+    width: 70%;
+    margin-left: 10px;
+}
+
+.shoplocation{
+    display: flex;
+    flex-direction: row;
+    font-style: italic;
+    align-items: center;
+    margin-right: 4px;
+}
+
+.bannersectionsubsection{
+    margin: 10px;
+    width: 40%;
+}
+
+.shopdescription{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    background-color: whitesmoke;
+    padding: 10px;
+}
+
+.contactdetails{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    background-color: whitesmoke;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+@media only screen and (max-width: 900px) {
+    .imagealternator{
+        width: 70%;
+        height: 250px;
+    }
+
+    .imagealternator img{
+        height: 100%;
+    }
+
+    .shopmaininfofirstsection{
+        width: 30%
+    }
+
+    .bannersectionsubsection{
+        width: 30%;
+    }
+}
+
+@media only screen and (max-width: 772px) {
+    .imagealternator{
+        width: 100%;
+        height: 250px;
+    }
+
+    .imagealternator img{
+        width: 100%;
+        height: 100%;
+    }
+
+    .shopmaininfofirstsection{
+        width: 50%
+    }
+
+    .bannersection{
+        flex-direction: column;
+    }
+
+    .bannersectionsubsection{
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .imagealternator{
+        width: 100%;
+        height: 200px; 
+    }
+
+    .imagealternator img{
+        width: 100%;
+        height: 100%;
+    }
+
+    .shopmaininfofirstsection{
+        width: 100%
+    }
+
+    .bannersection{
+        flex-direction: column;
+    }
+
+    .bannersectionsubsection{
+        width: 100%;
+    }
+}

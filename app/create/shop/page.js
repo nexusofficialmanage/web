@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './page.css';
 import { useSearchParams } from 'next/navigation';
 import { AiFillPlusCircle, AiOutlineMinusCircle } from 'react-icons/Ai';
@@ -7,10 +7,34 @@ import { AiFillPlusCircle, AiOutlineMinusCircle } from 'react-icons/Ai';
 function Page() {
   const searchParams = useSearchParams();
   const userId = searchParams.get('userid');
+  const [images, setImages] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [imagecirlceicon, setimagecircleicon] = useState("/assests/images/clement-fusil-Fpqx6GGXfXs-unsplash.jpg")
+
+  // Function to handle changing the current image index
+
+  useEffect(() => {
+    // Set up a timer to automatically advance the slideshow
+    if (images.length > 0) {
+      const interval = setInterval(() => {
+        console.log(currentIndex);
+        console.log(images.length);
+        console.log(images);
+        setCurrentIndex((prevIndex) =>
+          prevIndex === images.length - 1 ? 0 : prevIndex + 1
+        );
+      }, 2000); // Change the duration (in milliseconds) as needed
+  
+      // Clear the interval when the component unmounts
+      return () => clearInterval(interval);
+    }
+  }, [images, currentIndex]);
+
 
   // State to store form input values
   const [formData, setFormData] = useState({
     shopName: '',
+    storeid: '',
     description: '',
     addressLine1: '',
     addressLine2: '',
@@ -35,20 +59,14 @@ function Page() {
     setPhoneNumbers(newPhoneNumbers);
   };
 
-  // State to store uploaded images
-  const [images, setImages] = useState([]);
-  const defaultImage = '/default-image.jpg'; // Replace with your default image path
-
-  // Function to handle changes in form input fields
   const handleInputChange = (e, field) => {
     const value = e.target.value;
-    setFormData((prevData) => ({
+    setFormData((prevData) => ({          
       ...prevData,
       [field]: value,
     }));
   };
 
-  // Function to handle image uploads
   const handleImageUpload = (e) => {
     const newImages = [...images, URL.createObjectURL(e.target.files[0])];
     setImages(newImages);
@@ -56,14 +74,40 @@ function Page() {
 
   return (
     <div>
-      <div className='bannercreateshop'></div>
+      <div className='bannercreateshop'>
+      </div>
       <div className='shopinformation'>
+      <div className='imagealternator'>
+          {images.length === 0 ? (
+            <img src="/assests/images/clement-fusil-Fpqx6GGXfXs-unsplash.jpg" alt="Default" className="default-image" />
+          ) : (
+            <img
+            key={Number(currentIndex)}
+            src={images[currentIndex]}
+            alt={`Slide ${currentIndex + 1}`}
+            // onClick={() => changeImage(index)}
+            />
+          )}
+
+          <input
+            type="file"
+
+            onChange={handleImageUpload}
+            className='image-upload-input'
+          />
+        </div>
         <div className='shopinformationinput'>
           <input
             placeholder="Enter the Shop's name"
             className='inpt'
             value={formData.shopName}
             onChange={(e) => handleInputChange(e, 'shopName')}
+          />
+          <input 
+            placeholder='Enter a shopname without spaces, this should be unique and will be used to identify your shop'
+            className='inpt'
+            value={formData.storeid}
+            onChange={(e) => handleInputChange(e, storeid)}
           />
           <textarea
             placeholder='Enter the description'
@@ -109,9 +153,9 @@ function Page() {
           />
 
           {/* Phone Numbers */}
-          <div className='addoninput'>
+          <div className=''>
             {phoneNumbers.map((phoneNumber, index) => (
-              <div key={index}>
+              <div className='addoninput' key={index}>
                 <input
                   className='inpt'
                   type="text"
@@ -126,28 +170,13 @@ function Page() {
                 {index > 0 && (
                   <AiOutlineMinusCircle
                     onClick={() => removePhoneNumberInput(index)}
-                    className='btn'
+                    className='btncreate'
                   />
                 )}
               </div>
             ))}
-            <AiFillPlusCircle onClick={addPhoneNumberInput} className='btn' />
+            <AiFillPlusCircle onClick={addPhoneNumberInput} className='btncreate' />
           </div>
-        </div>
-        <div className='imagealternator'>
-          {images.length === 0 ? (
-            <img src="" alt="Default" className="default-image" />
-          ) : (
-            images.map((image, index) => (
-              <img key={index} src={image} alt={`Image ${index}`} />
-            ))
-          )}
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleImageUpload}
-            className='image-upload-input'
-          />
         </div>
       </div>
     </div>
