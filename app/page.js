@@ -1,14 +1,15 @@
 'use client'
 import MobileNavbar from "@/components/MobileNavbar";
 import DashBoard from "../components/DashBoard";
-import DeliveryLocation from "../components/HomePage/DeliveryLocation";
+import Home from "../components/HomePage/Home";
 import './globals.css'
 import { useEffect, useState } from "react";
 
-export default function Home() {
-
+export default function App() {
   return (
     <div>
+      <DashBoard />
+      <Home/>
       <DeliveryLocation />
     </div>
   );

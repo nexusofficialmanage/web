@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,900;1,600&family=Playfair+Display:wght@600&family=Poppins:wght@400;600&family=Red+Rose:wght@700&family=Rubik:wght@400;500;700&display=swap');
+
+
+.heading-title{
+    display: flex;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 4%;
+}
+
+.hero-section-text{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 4vw;
+    overflow: hidden;
+}
+
+.tag-line{
+    font-size: 60px;
+    font-weight: 900;
+    font-family: 'Poppins', sans-serif;
+}
+
+.tagline-span-1{
+    color:#FC8019
+}
+
+.tagline-span-2{
+    color: #9747FF;
+}
+
+.location-start{
+    display: flex;
+    gap: 2rem;
+}
+
+.get-started-btn{
+    background-color: #FC8019;
+    border-radius: 5rem;
+    border: none;
+    padding: .5rem 2rem;
+    color: white;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+
+.get-started-btn:hover{
+    background-color: #9747FF;
+}
+
+.hero-desc{
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    color: #4F4F4F;
+    margin-right: 12rem;
+}
+
+.cities-heading{
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    color: #4F4F4F;
+    margin-bottom: 1rem;
+}
+
+
+.cities {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    font-weight: 600;
+    color: #4F4F4F;
+    margin-bottom: 4rem;
+  }
+
+.odd{
+    color:#9747FF;
+}
+
+.hero-section-img{
+    flex: 1;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-section-img img:nth-child(1) {
+    align-self: center;
+}
+
+.hero-section-img img:nth-child(2) {
+    align-self: center;
+}
+
+.hero-section-img img:nth-child(3) {
+    align-self: center;
+    margin-right: -4rem;
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    .hero-section-img {
+        display: none;
+    }
+
+    .hero-section-text{
+        text-align: center;
+        margin: 0;
+    }
+
+    .hero-desc{
+        margin: 2%;
+    }
+
+    .tag-line{
+        font-size: 30px;
+    }
+
+    .location-start{
+        margin-top: 4%;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .cities{
+        text-align: center;
+        justify-content: center;
+    }
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    /* Styles */
+}

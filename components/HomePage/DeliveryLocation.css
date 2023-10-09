@@ -1,0 +1,20 @@
+.input-field{
+    border-radius: 5rem;
+    border: 1px solid #9747FF;
+    padding: .5rem 2rem;
+    width: 15vw;
+}
+
+.input-field:hover{
+    border: 1px solid #FC8019;
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    .input-field{
+        width: 30vw;
+    }
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    /* Styles */
+}

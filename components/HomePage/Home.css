@@ -1,0 +1,107 @@
+.Hero{
+    font-family: 'Poppins', sans-serif;
+}
+
+.shops-container{
+    margin-top: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;    
+}
+
+.cards{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 5%;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.shops-container .container:nth-child(1) {
+    border-right: 6px solid #9747FF;
+}
+
+.view-btn{
+    font-size:22px;
+    color: white;
+    background-color: #4285F4;
+    border-radius: 10px;
+    padding: 1% 5%;
+    border: none;
+    width:fit-content;
+    margin: auto;
+    margin-bottom: 5%;
+}
+
+.search-shop{
+    background-color: #9747FF;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top:3%;
+    padding: 3%;
+}
+
+.search-shop-place{
+    border-radius: .5rem;
+    color: white;
+    border: 1px solid white;
+    padding: .5rem 2rem;
+    background: transparent;
+    width: 15vw;
+}
+
+input::placeholder {
+    color: white; /* Set your desired color here */
+}
+
+.search-shop-title{
+    color: white;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+.search-shop-place:hover{
+    border: 1px solid #FC8019;
+}
+
+.search-btn{
+    background-color: #202020;
+    border-radius: .5rem;
+    color: white;
+    border: 1px solid white;
+    padding: .5rem 2rem;
+    margin-left: 1rem;
+}
+
+.whats-on-your-mind-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.whats-on-your-mind{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 15px;
+    justify-items: center; /* Center the circles horizontally */
+     align-items: center;
+}
+
+.whats-on-your-mind img{
+    width: 120px; /* Adjust the width to make the circle smaller */
+    height: 120px; /* Maintain aspect ratio */
+    border-radius: 50%;
+}
+
