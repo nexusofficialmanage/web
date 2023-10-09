@@ -9,6 +9,7 @@ function Page() {
   const userId = searchParams.get('userid');
   const [images, setImages] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [imagecirlceicon, setimagecircleicon] = useState("/assests/images/clement-fusil-Fpqx6GGXfXs-unsplash.jpg")
 
   // Function to handle changing the current image index
 
@@ -33,6 +34,7 @@ function Page() {
   // State to store form input values
   const [formData, setFormData] = useState({
     shopName: '',
+    storeid: '',
     description: '',
     addressLine1: '',
     addressLine2: '',
@@ -57,7 +59,6 @@ function Page() {
     setPhoneNumbers(newPhoneNumbers);
   };
 
-  // Function to handle changes in form input fields
   const handleInputChange = (e, field) => {
     const value = e.target.value;
     setFormData((prevData) => ({          
@@ -66,7 +67,6 @@ function Page() {
     }));
   };
 
-  // Function to handle image uploads
   const handleImageUpload = (e) => {
     const newImages = [...images, URL.createObjectURL(e.target.files[0])];
     setImages(newImages);
@@ -89,6 +89,13 @@ function Page() {
             // onClick={() => changeImage(index)}
             />
           )}
+
+          <div className='shop-icon-container'>
+            <div className='shop-icon'>
+              <img src={imagecirlceicon} alt="Shop Icon" />
+            </div>
+          </div>
+
           <input
             type="file"
 
@@ -102,6 +109,12 @@ function Page() {
             className='inpt'
             value={formData.shopName}
             onChange={(e) => handleInputChange(e, 'shopName')}
+          />
+          <input 
+            placeholder='Enter a shopname without spaces, this should be unique and will be used to identify your shop'
+            className='inpt'
+            value={formData.storeid}
+            onChange={(e) => handleInputChange(e, storeid)}
           />
           <textarea
             placeholder='Enter the description'
@@ -147,9 +160,9 @@ function Page() {
           />
 
           {/* Phone Numbers */}
-          <div className='addoninput'>
+          <div className=''>
             {phoneNumbers.map((phoneNumber, index) => (
-              <div key={index}>
+              <div className='addoninput' key={index}>
                 <input
                   className='inpt'
                   type="text"
