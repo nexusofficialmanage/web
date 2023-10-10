@@ -6,6 +6,7 @@ import './page.css'
 import { CiLocationOn } from 'react-icons/Ci';
 import {Accordion, AccordionItem} from "@nextui-org/react";
 import ContactDetails from '@/components/ShopPage/ContactDetails';
+import DescriptionView from '@/components/ShopPage/DescriptionView';
 
 function page() {
     const searchParams = useSearchParams();
@@ -14,6 +15,7 @@ function page() {
     const [images, setImages] = useState(['/assests/images/nature-landscape-hd-usqznq19dscdjkf8.jpg', '/assests/images/clement-fusil-Fpqx6GGXfXs-unsplash.jpg']);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [contactDetailsPopup, setContactDetailsPopup] = useState(false);
+    const [descriptionViewPopup, setDescriptionViewPopup] = useState(false);
 
     useEffect(() => {
       // Set up a timer to automatically advance the slideshow
@@ -44,6 +46,10 @@ function page() {
       setContactDetailsPopup(contactDetailsPopup^1);
     }
 
+    const handleDescriptionView = () => {
+      setDescriptionViewPopup(descriptionViewPopup ^ 1);
+    }
+
   return (
     <div className='shoppage'>
       <div className='shopmaininfo'>
@@ -72,7 +78,7 @@ function page() {
             )}
           </div>
           <div className='bannersectionsubsection first'>
-            <div className='shopdescription'>
+            <div className='shopdescription' onClick={handleDescriptionView}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
               Quisque fringilla bibendum justo, ac luctus ante placerat a. 
               Duis id facilisis velit, vel placerat ipsum. Maecenas molestie ullamcorper ex, in venenatis odio. 
@@ -84,9 +90,12 @@ function page() {
           </div>
 
           <div className='bannersectionsubsection second'>
-            <div className='shoptitle'>
+            <div className='shoptagline'>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
               Quisque fringilla bibendum 
+            </div>
+            <div className='descriptionpress' onClick={handleDescriptionView}>
+              Description
             </div>
             <div className='contactdetailspress' onClick={handleViewContactDetails}>
               Contact Details
@@ -95,6 +104,7 @@ function page() {
           
       </div>
       <ContactDetails view ={contactDetailsPopup} onClose={handleViewContactDetails}/>
+      <DescriptionView view={descriptionViewPopup} onClose={handleDescriptionView} />
     </div>
   )
 }

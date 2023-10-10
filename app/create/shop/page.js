@@ -1,4 +1,4 @@
-'use client';
+'use client'
 import React, { useEffect, useState } from 'react';
 import './page.css';
 import { useSearchParams } from 'next/navigation';
@@ -11,30 +11,23 @@ function Page() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [imagecirlceicon, setimagecircleicon] = useState("/assests/images/clement-fusil-Fpqx6GGXfXs-unsplash.jpg")
 
-  // Function to handle changing the current image index
-
   useEffect(() => {
     // Set up a timer to automatically advance the slideshow
     if (images.length > 0) {
       const interval = setInterval(() => {
-        console.log(currentIndex);
-        console.log(images.length);
-        console.log(images);
         setCurrentIndex((prevIndex) =>
           prevIndex === images.length - 1 ? 0 : prevIndex + 1
         );
-      }, 2000); // Change the duration (in milliseconds) as needed
-  
-      // Clear the interval when the component unmounts
+      }, 2000); 
       return () => clearInterval(interval);
     }
   }, [images, currentIndex]);
-
 
   // State to store form input values
   const [formData, setFormData] = useState({
     shopName: '',
     storeid: '',
+    shopTagline: '',
     description: '',
     addressLine1: '',
     addressLine2: '',
@@ -42,22 +35,8 @@ function Page() {
     city: '',
     state: '',
     country: '',
+    phoneNumbers: [''], // Initialize with an empty phone number
   });
-
-  // State to store phone numbers
-  const [phoneNumbers, setPhoneNumbers] = useState(['']);
-
-  // Function to add a new phone number input field
-  const addPhoneNumberInput = () => {
-    setPhoneNumbers([...phoneNumbers, '']);
-  };
-
-  // Function to remove a phone number input field
-  const removePhoneNumberInput = (index) => {
-    const newPhoneNumbers = [...phoneNumbers];
-    newPhoneNumbers.splice(index, 1);
-    setPhoneNumbers(newPhoneNumbers);
-  };
 
   const handleInputChange = (e, field) => {
     const value = e.target.value;
@@ -72,32 +51,47 @@ function Page() {
     setImages(newImages);
   };
 
+  const addPhoneNumberInput = () => {
+    setFormData((prevData) => ({
+      ...prevData,
+      phoneNumbers: [...prevData.phoneNumbers, ''], // Add an empty phone number
+    }));
+  };
+
+  const removePhoneNumberInput = (index) => {
+    setFormData((prevData) => {
+      const newPhoneNumbers = [...prevData.phoneNumbers];
+      newPhoneNumbers.splice(index, 1);
+      return {
+        ...prevData,
+        phoneNumbers: newPhoneNumbers,
+      };
+    });
+  };
+
   return (
     <div>
-      <div className='bannercreateshop'>
-      </div>
+      <div className='bannercreateshop'></div>
       <div className='shopinformation'>
-      <div className='imagealternator'>
-          {images.length === 0 ? (
+        <div className='imagealternator'>
+        {images.length === 0 ? (
             <img src="/assests/images/clement-fusil-Fpqx6GGXfXs-unsplash.jpg" alt="Default" className="default-image" />
-          ) : (
-            <img
-            key={Number(currentIndex)}
-            src={images[currentIndex]}
-            alt={`Slide ${currentIndex + 1}`}
-            // onClick={() => changeImage(index)}
-            />
-          )}
-
+            ) : (
+              <img
+              key={Number(currentIndex)}
+              src={images[currentIndex]}
+              alt={`Slide ${currentIndex + 1}`}
+              // onClick={() => changeImage(index)}
+              />
+           )}
           <input
             type="file"
-
             onChange={handleImageUpload}
             className='image-upload-input'
           />
         </div>
         <div className='shopinformationinput'>
-          <input
+        <input
             placeholder="Enter the Shop's name"
             className='inpt'
             value={formData.shopName}
@@ -108,6 +102,12 @@ function Page() {
             className='inpt'
             value={formData.storeid}
             onChange={(e) => handleInputChange(e, storeid)}
+          />
+          <input
+            placeholder="Enter a ShopTagline"
+            className='inpt'
+            value={formData.shopTagline}
+            onChange={(e) => handleInputChange(e, 'shopTagline')}
           />
           <textarea
             placeholder='Enter the description'
@@ -120,12 +120,6 @@ function Page() {
             className='inpt'
             value={formData.addressLine1}
             onChange={(e) => handleInputChange(e, 'addressLine1')}
-          />
-          <input
-            placeholder="Enter Address Line 2"
-            className='inpt'
-            value={formData.addressLine2}
-            onChange={(e) => handleInputChange(e, 'addressLine2')}
           />
           <input
             placeholder="Enter Pincode"
@@ -151,10 +145,8 @@ function Page() {
             value={formData.country}
             onChange={(e) => handleInputChange(e, 'country')}
           />
-
-          {/* Phone Numbers */}
           <div className=''>
-            {phoneNumbers.map((phoneNumber, index) => (
+            {formData.phoneNumbers.map((phoneNumber, index) => (
               <div className='addoninput' key={index}>
                 <input
                   className='inpt'
@@ -162,9 +154,12 @@ function Page() {
                   value={phoneNumber}
                   placeholder={`Phone Number ${index + 1}`}
                   onChange={(e) => {
-                    const newPhoneNumbers = [...phoneNumbers];
+                    const newPhoneNumbers = [...formData.phoneNumbers];
                     newPhoneNumbers[index] = e.target.value;
-                    setPhoneNumbers(newPhoneNumbers);
+                    setFormData((prevData) => ({
+                      ...prevData,
+                      phoneNumbers: newPhoneNumbers,
+                    }));
                   }}
                 />
                 {index > 0 && (
