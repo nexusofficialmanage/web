@@ -7,6 +7,7 @@ import { CiLocationOn } from 'react-icons/Ci';
 import {Accordion, AccordionItem} from "@nextui-org/react";
 import ContactDetails from '@/components/ShopPage/ContactDetails';
 import DescriptionView from '@/components/ShopPage/DescriptionView';
+import ProductCard from '@/components/ShopPage/ProductCard';
 
 function page() {
     const searchParams = useSearchParams();
@@ -16,6 +17,7 @@ function page() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [contactDetailsPopup, setContactDetailsPopup] = useState(false);
     const [descriptionViewPopup, setDescriptionViewPopup] = useState(false);
+    const [products, setProducts] = useState([{productName: 'Coat'}, {productName: 'Shoe'}])
 
     useEffect(() => {
       // Set up a timer to automatically advance the slideshow
@@ -101,7 +103,12 @@ function page() {
               Contact Details
             </div>
           </div>
-          
+
+      </div>
+      <div className='productsDisplay'>
+          {products.map((product) => {
+            return <ProductCard productDetails={product} />
+          })}
       </div>
       <ContactDetails view ={contactDetailsPopup} onClose={handleViewContactDetails}/>
       <DescriptionView view={descriptionViewPopup} onClose={handleDescriptionView} />
