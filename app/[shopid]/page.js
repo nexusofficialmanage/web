@@ -96,11 +96,13 @@ function page() {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
               Quisque fringilla bibendum 
             </div>
-            <div className='descriptionpress' onClick={handleDescriptionView}>
-              Description
-            </div>
-            <div className='contactdetailspress' onClick={handleViewContactDetails}>
-              Contact Details
+            <div className='descriptioncontactdetails'>
+              <div className='descriptionpress' onClick={handleDescriptionView}>
+                Description
+              </div>
+              <div className='contactdetailspress' onClick={handleViewContactDetails}>
+                Contact Details
+              </div>
             </div>
           </div>
 

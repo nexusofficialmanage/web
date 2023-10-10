@@ -26,3 +26,10 @@
     cursor: pointer;
     color: #0074d9; 
   }
+
+  @media only screen and (max-width: 800px) {
+    .popup-container{
+      height: fit-content;
+      width: 90%;
+    }
+  }

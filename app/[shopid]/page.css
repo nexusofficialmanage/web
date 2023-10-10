@@ -162,7 +162,7 @@
     }
 
     .shopmaininfofirstsection{
-        width: 50%
+        width: 100%
     }
 
     .bannersection{
@@ -174,18 +174,24 @@
         margin: 0;
     }
 
+    .descriptioncontactdetails{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
     .contactdetailspress{
         margin-top: 0;
-        width: 22%;
+        height: 45%;
     }
 
     .descriptionpress{
-        width: 22%;
         margin-top: 0;
+        height: 45%;
     }
 
     .shoptagline{
-        width:50%;
+        width: 75%;
     }
 
     .second{
@@ -208,6 +214,10 @@
 
     .shopmaininfofirstsection{
         width: 100%
+    }
+
+    .shoptagline{
+        width: 58%;
     }
 
     .bannersection{
