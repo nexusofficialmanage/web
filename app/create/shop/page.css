@@ -1,96 +1,126 @@
-body{
-    padding: 0px;
-    margin: 0px;
-}
-
-.bannercreateshop{
+body {
+    padding: 0;
+    margin: 0;
+  }
+  
+  .bannercreateshop {
     height: 100px;
     background-color: black;
     opacity: 0.85;
-}
-
-.tooltip{
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  tr {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  td {
+    padding: 10px;
+    vertical-align: top;
+  }
+  
+  label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .tooltip {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
     padding: 8px;
     background-color: black;
     color: white;
-}
-
-.shopinformation{
+  }
+  
+  .shopinformation {
     display: flex;
     flex-direction: column;
     opacity: 0.8;
-}
-
-.shopinformationinput{
+  }
+  
+  .shopinformationinput {
     display: flex;
     flex-direction: column;
     margin: 20px;
-}
-
-.labelinput{
+  }
+  
+  .labelinput {
     display: flex;
     flex-direction: row;
     align-items: center;
-}
-
-.inpt{
+  }
+  
+  .inpt {
     padding: 6px;
     margin: 10px;
     border-radius: 5px;
     border: 0.2px solid black;
-    /* width: 300px; */
-}
-
-.textbox{
+  }
+  
+  .textbox {
     height: 70px;
-}
-
-.btncreate{
+  }
+  
+  .btncreate {
     font-size: 24px;
-    margin-left: 10px;;
-}
-
-.addoninput{
+    margin-left: 10px;
+  }
+  
+  .addoninput {
     display: flex;
     flex-direction: row;
     align-items: center;
-}
-
-.imagealternator{
+  }
+  
+  .imagealternator {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 400px;
-}
-
-.imagealternator img{
+  }
+  
+  .imagealternator img {
     width: 60%;
     height: 90%;
     border-radius: 8px;
-}
-
-@media only screen and (max-width: 768px) {
-    .imagealternator{
-        height: 300px;
-    }
-}
-
-.shop-icon-container {
-    position: relative;
-}
+  }
   
-.shop-icon {
+  @media only screen and (max-width: 768px) {
+    .imagealternator {
+      height: 300px;
+    }
+  }
+  
+  .shop-icon-container {
+    position: relative;
+  }
+  
+  .shop-icon {
     position: absolute;
     top: -80px;
-    left: -500px; 
-}
-
-.shop-icon img {
+    left: -500px;
+  }
+  
+  .shop-icon img {
     width: 40%;
-    border-radius: 100%
-}
-
+    border-radius: 100%;
+  }
+  
+  /* Add the new styles for table labels and input fields */
+  
+  table label {
+    font-weight: normal; /* Reset font-weight for table labels */
+  }
+  
+  table .inpt {
+    width: 100%; /* Ensure table input fields occupy the full width */
+  }
+  
