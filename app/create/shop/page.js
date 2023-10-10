@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import './page.css';
 import { useSearchParams } from 'next/navigation';
 import { AiFillPlusCircle, AiOutlineMinusCircle } from 'react-icons/Ai';
+import {Tooltip, Button} from "@nextui-org/react";
 
 function Page() {
   const searchParams = useSearchParams();
@@ -29,13 +30,13 @@ function Page() {
     storeid: '',
     shopTagline: '',
     description: '',
-    addressLine1: '',
-    addressLine2: '',
+    addressLine: '',
     pincode: '',
     city: '',
     state: '',
     country: '',
     phoneNumbers: [''], // Initialize with an empty phone number
+    emailIds: [''],
   });
 
   const handleInputChange = (e, field) => {
@@ -69,6 +70,24 @@ function Page() {
     });
   };
 
+  const addEmailIdInput = () => {
+    setFormData((prevData) => ({
+      ...prevData,
+      emailIds: [...prevData.emailIds, ''], // Add an empty phone number
+    }));
+  };
+
+  const removeEmailIdInput = (index) => {
+    setFormData((prevData) => {
+      const newEmailIds = [...prevData.emailIds];
+      newEmailIds.splice(index, 1);
+      return {
+        ...prevData,
+        emailIds: newEmailIds,
+      };
+    });
+  };
+
   return (
     <div>
       <div className='bannercreateshop'></div>
@@ -91,24 +110,37 @@ function Page() {
           />
         </div>
         <div className='shopinformationinput'>
-        <input
-            placeholder="Enter the Shop's name"
+        <div className='labelinput'>
+          <div>Shop Name: </div>
+          <input
+            placeholder="Enter your Shop's name"
             className='inpt'
             value={formData.shopName}
             onChange={(e) => handleInputChange(e, 'shopName')}
           />
-          <input 
-            placeholder='Enter a shopname without spaces, this should be unique and will be used to identify your shop'
-            className='inpt'
-            value={formData.storeid}
-            onChange={(e) => handleInputChange(e, storeid)}
-          />
-          <input
-            placeholder="Enter a ShopTagline"
-            className='inpt'
-            value={formData.shopTagline}
-            onChange={(e) => handleInputChange(e, 'shopTagline')}
-          />
+        </div>
+          <div className='labelinput'>
+            <div>ShopId: </div>
+            <Tooltip content='The name should be unique and without spaces and will be used to identify your store' className='tooltip'>
+              <input 
+                placeholder='Enter a unique shopname'
+                className='inpt'
+                value={formData.storeid}
+                onChange={(e) => handleInputChange(e, storeid)}
+              />
+            </Tooltip>
+          </div>
+          <div className='labelinput'>
+            <div>ShopTag Line: </div>
+            <Tooltip content='The tagline should be short and should be like a motto for your store' className='tooltip'>
+              <input
+                placeholder="Enter a ShopTagline"
+                className='inpt'
+                value={formData.shopTagline}
+                onChange={(e) => handleInputChange(e, 'shopTagline')}
+              />
+            </Tooltip>
+          </div>
           <textarea
             placeholder='Enter the description'
             className='inpt textbox'
@@ -116,9 +148,9 @@ function Page() {
             onChange={(e) => handleInputChange(e, 'description')}
           />
           <input
-            placeholder="Enter Address Line 1"
+            placeholder="Enter Address Line"
             className='inpt'
-            value={formData.addressLine1}
+            value={formData.addressLine}
             onChange={(e) => handleInputChange(e, 'addressLine1')}
           />
           <input
@@ -171,6 +203,33 @@ function Page() {
               </div>
             ))}
             <AiFillPlusCircle onClick={addPhoneNumberInput} className='btncreate' />
+          </div>
+          <div className=''>
+            {formData.emailIds.map((emailId, index) => (
+              <div className='addoninput' key={index}>
+                <input
+                  className='inpt'
+                  type="text"
+                  value={emailId}
+                  placeholder={`Email Id ${index + 1}`}
+                  onChange={(e) => {
+                    const newEmailIds = [...formData.emailIds];
+                    newEmailIds[index] = e.target.value;
+                    setFormData((prevData) => ({
+                      ...prevData,
+                      emailIds: newEmailIds,
+                    }));
+                  }}
+                />
+                {index > 0 && (
+                  <AiOutlineMinusCircle
+                    onClick={() => removeEmailIdInput(index)}
+                    className='btncreate'
+                  />
+                )}
+              </div>
+            ))}
+            <AiFillPlusCircle onClick={addEmailIdInput} className='btncreate' />
           </div>
         </div>
       </div>
