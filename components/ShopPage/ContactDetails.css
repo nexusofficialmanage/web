@@ -1,0 +1,35 @@
+
+.popup-container {
+  display: flex;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%; /* Adjust the width as needed */
+  height: 50%;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.contactdetails.active .popup-container {
+  display: block;
+}
+
+.close-button {
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+  cursor: pointer;
+  color: #0074d9; 
+}
+
+@media only screen and (max-width: 800px) {
+  .popup-container{
+    height: fit-content;
+    width: 90%;
+  }
+}

@@ -4,6 +4,10 @@ import React, { useEffect, useState } from 'react'
 import { useSearchParams } from "next/navigation";
 import './page.css'
 import { CiLocationOn } from 'react-icons/Ci';
+import {Accordion, AccordionItem} from "@nextui-org/react";
+import ContactDetails from '@/components/ShopPage/ContactDetails';
+import DescriptionView from '@/components/ShopPage/DescriptionView';
+import ProductCard from '@/components/ShopPage/ProductCard';
 
 function page() {
     const searchParams = useSearchParams();
@@ -11,14 +15,14 @@ function page() {
     const [shopInformation, setShopInformation] = useState(); 
     const [images, setImages] = useState(['/assests/images/nature-landscape-hd-usqznq19dscdjkf8.jpg', '/assests/images/clement-fusil-Fpqx6GGXfXs-unsplash.jpg']);
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [contactDetailsPopup, setContactDetailsPopup] = useState(false);
+    const [descriptionViewPopup, setDescriptionViewPopup] = useState(false);
+    const [products, setProducts] = useState([{productName: 'Coat'}, {productName: 'Shoe'}])
 
     useEffect(() => {
       // Set up a timer to automatically advance the slideshow
       if (images.length > 0) {
         const interval = setInterval(() => {
-          console.log(currentIndex);
-          console.log(images.length);
-          console.log(images);
           setCurrentIndex((prevIndex) =>
             prevIndex === images.length - 1 ? 0 : prevIndex + 1
           );
@@ -39,6 +43,15 @@ function page() {
       }
     }, [])
 
+    const handleViewContactDetails = () => {
+      console.log('hello')
+      setContactDetailsPopup(contactDetailsPopup^1);
+    }
+
+    const handleDescriptionView = () => {
+      setDescriptionViewPopup(descriptionViewPopup ^ 1);
+    }
+
   return (
     <div className='shoppage'>
       <div className='shopmaininfo'>
@@ -49,9 +62,9 @@ function page() {
             <div>Shop Location</div>
           </div>
         </div>
-        <div className='shopmaininfosecondsection'>
+        {/* <div className='shopmaininfosecondsection'>
 
-        </div>
+        </div> */}
       </div>
       <div className='bannersection'>
         <div className='imagealternator'>
@@ -66,19 +79,41 @@ function page() {
               />
             )}
           </div>
-          <div className='bannersectionsubsection'>
-            <div className='shopdescription'>
+          <div className='bannersectionsubsection first'>
+            <div className='shopdescription' onClick={handleDescriptionView}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
               Quisque fringilla bibendum justo, ac luctus ante placerat a. 
               Duis id facilisis velit, vel placerat ipsum. Maecenas molestie ullamcorper ex, in venenatis odio. 
-              
             </div>
-            <div className='contactdetails'>
+            <div className='contactdetails' onClick={handleViewContactDetails}>
               <div>Email ID: jeevanalexenkavalam@gmail.com</div>
               <div>Phone number: 8921655405</div>
             </div>
           </div>
+
+          <div className='bannersectionsubsection second'>
+            <div className='shoptagline'>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+              Quisque fringilla bibendum 
+            </div>
+            <div className='descriptioncontactdetails'>
+              <div className='descriptionpress' onClick={handleDescriptionView}>
+                Description
+              </div>
+              <div className='contactdetailspress' onClick={handleViewContactDetails}>
+                Contact Details
+              </div>
+            </div>
+          </div>
+
       </div>
+      <div className='productsDisplay'>
+          {products.map((product) => {
+            return <ProductCard productDetails={product} />
+          })}
+      </div>
+      <ContactDetails view ={contactDetailsPopup} onClose={handleViewContactDetails}/>
+      <DescriptionView view={descriptionViewPopup} onClose={handleDescriptionView} />
     </div>
   )
 }

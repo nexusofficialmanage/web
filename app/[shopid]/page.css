@@ -9,7 +9,11 @@
     display: flex;
     flex-direction: row;
     width: 100%;
-    padding: 10px;
+    margin: 10px;
+}
+
+.shortdescription{
+    width: 500px;
 }
 
 .imagealternator{
@@ -60,8 +64,8 @@
 }
 
 .bannersectionsubsection{
-    margin: 10px;
     width: 40%;
+    margin-left: 15px;
 }
 
 .shopdescription{
@@ -71,12 +75,52 @@
     padding: 10px;
 }
 
+.shoptagline{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    background-color: whitesmoke;
+    padding: 10px;
+}
+
+.descriptionpress{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    background-color: whitesmoke;
+    margin-top: 10px;
+    padding: 10px;
+}
+
 .contactdetails{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
     background-color: whitesmoke;
     margin-top: 10px;
     padding: 10px;
+}
+
+.contactdetailspress{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    background-color: whitesmoke;
+    padding: 10px;
+    margin-top: 10px;
+    /* width: 30%; */
+}
+
+.second{
+    display: none;
+    flex-direction: column;
+}
+
+.contactdetails:hover{
+    cursor: pointer;
+}
+
+.productsDisplay{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
 }
 
 @media only screen and (max-width: 900px) {
@@ -96,6 +140,14 @@
     .bannersectionsubsection{
         width: 30%;
     }
+
+    .first{
+        display: none;
+    }
+
+    .second{
+        display: flex;
+    }
 }
 
 @media only screen and (max-width: 772px) {
@@ -110,7 +162,7 @@
     }
 
     .shopmaininfofirstsection{
-        width: 50%
+        width: 100%
     }
 
     .bannersection{
@@ -119,6 +171,33 @@
 
     .bannersectionsubsection{
         width: 100%;
+        margin: 0;
+    }
+
+    .descriptioncontactdetails{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .contactdetailspress{
+        margin-top: 0;
+        height: 45%;
+    }
+
+    .descriptionpress{
+        margin-top: 0;
+        height: 45%;
+    }
+
+    .shoptagline{
+        width: 75%;
+    }
+
+    .second{
+        justify-content: space-between;
+        padding-top: 10px;
+        flex-direction: row;
     }
 }
 
@@ -137,11 +216,16 @@
         width: 100%
     }
 
+    .shoptagline{
+        width: 58%;
+    }
+
     .bannersection{
         flex-direction: column;
     }
 
     .bannersectionsubsection{
         width: 100%;
+        margin: 0;
     }
 }
