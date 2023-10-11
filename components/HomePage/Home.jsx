@@ -66,7 +66,7 @@ const Home = () => {
         </div>
 
         <div className="container">
-            <h1>Personalized Recommendations</h1>
+            <h1 className='personalized-heading'>Personalized Recommendations</h1>
               <div className="cards">
                 {ShopData.map(data)}
               </div>

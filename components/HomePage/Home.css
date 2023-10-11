@@ -34,12 +34,17 @@
     font-size:22px;
     color: white;
     background-color: #4285F4;
-    border-radius: 10px;
-    padding: 1% 5%;
+    border-radius: 25px;
+    padding: .6% 3%;
     border: none;
     width:fit-content;
     margin: auto;
+    transition: all .3s ease-in-out;
     margin-bottom: 5%;
+}
+
+.view-btn:hover{
+    background-color:#FC8019;
 }
 
 .search-shop{
@@ -58,7 +63,7 @@
     border: 1px solid white;
     padding: .5rem 2rem;
     background: transparent;
-    width: 15vw;
+    width: 30vw;
 }
 
 input::placeholder {
@@ -89,6 +94,8 @@ input::placeholder {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 4%;
+    margin-bottom: 4%;
 }
 
 .whats-on-your-mind{
@@ -103,5 +110,44 @@ input::placeholder {
     width: 120px; /* Adjust the width to make the circle smaller */
     height: 120px; /* Maintain aspect ratio */
     border-radius: 50%;
+}
+
+
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    .shops-container{
+        flex-direction: column;
+    }
+
+    .search-shop-place{
+        width: 60vw;
+    }
+
+    .search-shop{
+        flex-direction: column;
+        gap: .6rem;
+    }
+
+    .whats-on-your-mind{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 13px;
+        justify-items: center; /* Center the circles horizontally */
+        align-items: center;
+    }
+
+    .whats-on-your-mind img{
+        width: 100px; /* Adjust the width to make the circle smaller */
+        height: 100px; /* Maintain aspect ratio */
+        border-radius: 50%;
+    }
+
+    .personalized-heading{
+        text-align: center;
+    }
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    
 }
 

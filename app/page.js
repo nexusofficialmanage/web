@@ -8,9 +8,7 @@ import { useEffect, useState } from "react";
 export default function App() {
   return (
     <div>
-      <DashBoard />
       <Home/>
-      <DeliveryLocation />
     </div>
   );
 }
