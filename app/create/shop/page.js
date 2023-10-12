@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './page.css';
 import { useSearchParams } from 'next/navigation';
 import { AiFillPlusCircle, AiOutlineMinusCircle } from 'react-icons/Ai';
@@ -10,21 +10,19 @@ function Page() {
   const userId = searchParams.get('userid');
   const [images, setImages] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [imagecirlceicon, setimagecircleicon] = useState("/assests/images/clement-fusil-Fpqx6GGXfXs-unsplash.jpg")
+  const [imagecirlceicon, setimagecircleicon] = useState("/assests/images/clement-fusil-Fpqx6GGXfXs-unsplash.jpg");
 
   useEffect(() => {
-    // Set up a timer to automatically advance the slideshow
     if (images.length > 0) {
       const interval = setInterval(() => {
         setCurrentIndex((prevIndex) =>
           prevIndex === images.length - 1 ? 0 : prevIndex + 1
         );
-      }, 2000); 
+      }, 2000);
       return () => clearInterval(interval);
     }
   }, [images, currentIndex]);
 
-  // State to store form input values
   const [formData, setFormData] = useState({
     shopName: '',
     storeid: '',
@@ -35,15 +33,49 @@ function Page() {
     city: '',
     state: '',
     country: '',
-    phoneNumbers: [''], // Initialize with an empty phone number
+    phoneNumbers: [''],
     emailIds: [''],
+    facebookLink: '',
+    twitterLink: '',
+    instagramLink: '',
+    openDays: {
+      sunday: false,
+      monday: false,
+      tuesday: false,
+      wednesday: false,
+      thursday: false,
+      friday: false,
+      saturday: false,
+    },
+    openingTime: '',
+    closingTime: '',
+    refundPolicy: '',
+    returnPolicy: '',
   });
 
   const handleInputChange = (e, field) => {
     const value = e.target.value;
-    setFormData((prevData) => ({          
+    setFormData((prevData) => ({
       ...prevData,
       [field]: value,
+    }));
+  };
+
+  const handleSocialMediaLinkChange = (e, field) => {
+    const value = e.target.value;
+    setFormData((prevData) => ({
+      ...prevData,
+      [field]: value,
+    }));
+  };
+
+  const toggleOpenDay = (day) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      openDays: {
+        ...prevData.openDays,
+        [day]: !prevData.openDays[day],
+      },
     }));
   };
 
@@ -55,7 +87,7 @@ function Page() {
   const addPhoneNumberInput = () => {
     setFormData((prevData) => ({
       ...prevData,
-      phoneNumbers: [...prevData.phoneNumbers, ''], // Add an empty phone number
+      phoneNumbers: [...prevData.phoneNumbers, ''],
     }));
   };
 
@@ -73,7 +105,7 @@ function Page() {
   const addEmailIdInput = () => {
     setFormData((prevData) => ({
       ...prevData,
-      emailIds: [...prevData.emailIds, ''], // Add an empty phone number
+      emailIds: [...prevData.emailIds, ''],
     }));
   };
 
@@ -100,7 +132,6 @@ function Page() {
               key={Number(currentIndex)}
               src={images[currentIndex]}
               alt={`Slide ${currentIndex + 1}`}
-              // onClick={() => changeImage(index)}
             />
           )}
           <input
@@ -129,7 +160,7 @@ function Page() {
                 <td><label htmlFor="storeid">ShopId:</label></td>
                 <td>
                   <Tooltip content='The name should be unique and without spaces and will be used to identify your store' className='tooltip'>
-                    <input 
+                    <input
                       type="text"
                       id="storeid"
                       placeholder='Enter a unique shopname'
@@ -302,12 +333,118 @@ function Page() {
                   </div>
                 </td>
               </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+              <tr>
+                <td><label htmlFor="facebookLink">Facebook:</label></td>
+                <td>
+                  <input
+                    type="text"
+                    id="facebookLink"
+                    placeholder="Enter Facebook URL"
+                    className='inpt'
+                    value={formData.facebookLink}
+                    onChange={(e) => handleSocialMediaLinkChange(e, 'facebookLink')}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td><label htmlFor="twitterLink">Twitter:</label></td>
+                <td>
+                  <input
+                    type="text"
+                    id="twitterLink"
+                    placeholder="Enter Twitter URL"
+                    className='inpt'
+                    value={formData.twitterLink}
+                    onChange={(e) => handleSocialMediaLinkChange(e, 'twitterLink')}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td><label htmlFor="instagramLink">Instagram:</label></td>
+                <td>
+                  <input
+                    type="text"
+                    id="instagramLink"
+                    placeholder="Enter Instagram URL"
+                    className='inpt'
+                    value={formData.instagramLink}
+                    onChange={(e) => handleSocialMediaLinkChange(e, 'instagramLink')}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td><label>Shop Open Days:</label></td>
+                <td>
+                  <div className='open-days'>
+                    {Object.keys(formData.openDays).map((day) => (
+                      <label key={day}>
+                        <input
+                          type="checkbox"
+                          checked={formData.openDays[day]}
+                          onChange={() => toggleOpenDay(day)}
+                        />
+                        {day.charAt(0).toUpperCase() + day.slice(1)}
+                      </label>
+                    ))}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+            <td><label htmlFor="openingTime">Opening Time:</label></td>
+            <td>
+              <input
+                type="time"
+                id="openingTime"
+                className='inpt'
+                value={formData.openingTime}
+                onChange={(e) => handleInputChange(e, 'openingTime')}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td><label htmlFor="closingTime">Closing Time:</label></td>
+            <td>
+              <input
+                type="time"
+                id="closingTime"
+                className='inpt'
+                value={formData.closingTime}
+                onChange={(e) => handleInputChange(e, 'closingTime')}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td><label htmlFor="refundPolicy">Refund Policy:</label></td>
+            <td>
+              <textarea
+                id="refundPolicy"
+                placeholder="Enter your refund policy"
+                className='inpt textbox'
+                value={formData.refundPolicy}
+                onChange={(e) => handleInputChange(e, 'refundPolicy')}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td><label htmlFor="returnPolicy">Return Policy:</label></td>
+            <td>
+              <textarea
+                id="returnPolicy"
+                placeholder="Enter your return policy"
+                className='inpt textbox'
+                value={formData.returnPolicy}
+                onChange={(e) => handleInputChange(e, 'returnPolicy')}
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-  );
+  </div>
+</div>
+);
 }
 
 export default Page;
+
+    

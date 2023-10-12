@@ -19,7 +19,10 @@ export const POST = async (request) => {
             shippingInfo,
             returnPolicy,
             refundPolicy,
+            shopLogo,
             socialMediaLinks,
+            termsAndConditions,
+            privacyPolicy 
         } = await request.json();
 
     try {
