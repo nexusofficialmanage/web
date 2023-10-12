@@ -25,11 +25,12 @@ function DeliveryLocation() {
     <div className="suggestions-container">
       <input
         className="input-field"
-        placeholder="Enter your location"
+        type='text'
         onChange={(e) => {
           setInputValue(e.target.value);
           getSuggestions(e.target.value);
         }}
+        placeholder="Enter your location"
       />
       <div className="suggestions">
         {suggestions.map((suggestion) => (

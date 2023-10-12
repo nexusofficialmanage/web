@@ -7,7 +7,7 @@ export default function ShopCard(props) {
       <div className="event_container">
         <div className="eventDetail_container">
             <div className="event_date">
-                <h6>Events On: {props.events_on}</h6>
+                <h6>{props.events_on} of the shop</h6>
             </div>
 
             <img src={props.template} alt={props.event_name} />
