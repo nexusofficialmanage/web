@@ -40,7 +40,7 @@ function page() {
         </div>
         <div className='detailview'>
           {detail == "description" && <Description />}
-          {detail == "Overview" && <Overview />}
+          {detail == "overview" && <Overview />}
           {detail == "contactdetails" && <ContactDetails />}
           {detail == "reviews" && <Reviews />}
           {detail == "photos" && <Photos />}
