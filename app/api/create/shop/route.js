@@ -13,16 +13,11 @@ export const POST = async (request) => {
             shopTiming,
             pictures,
             openOnDays,
-            productCategories,
-            productListings,
             paymentMethods,
-            shippingInfo,
             returnPolicy,
             refundPolicy,
-            shopLogo,
             socialMediaLinks,
-            termsAndConditions,
-            privacyPolicy 
+            tags,
         } = await request.json();
 
     try {
@@ -39,16 +34,11 @@ export const POST = async (request) => {
             shopTiming,
             pictures,
             openOnDays,
-            productCategories,
-            productListings,
             paymentMethods,
-            shippingInfo,
             returnPolicy,
             refundPolicy,
-            shopLogo,
             socialMediaLinks,
-            termsAndConditions,
-            privacyPolicy 
+            tags,
         });
 
         await newShop.save();

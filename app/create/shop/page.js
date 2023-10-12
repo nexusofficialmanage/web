@@ -11,6 +11,9 @@ function Page() {
   const [images, setImages] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [imagecirlceicon, setimagecircleicon] = useState("/assests/images/clement-fusil-Fpqx6GGXfXs-unsplash.jpg");
+  
+  // State for tags
+  const [tags, setTags] = useState([]);
 
   useEffect(() => {
     if (images.length > 0) {
@@ -51,6 +54,7 @@ function Page() {
     closingTime: '',
     refundPolicy: '',
     returnPolicy: '',
+    tags: [],
   });
 
   const handleInputChange = (e, field) => {
@@ -118,6 +122,16 @@ function Page() {
         emailIds: newEmailIds,
       };
     });
+  };
+
+  const handleTagInputChange = (e) => {
+    const value = e.target.value;
+    const newTags = value.split(',').map((tag) => tag.trim());
+    setTags(newTags);
+    setFormData((prevData) => ({
+      ...prevData,
+      tags: tags,
+    }));
   };
 
   return (
@@ -390,61 +404,73 @@ function Page() {
                 </td>
               </tr>
               <tr>
-            <td><label htmlFor="openingTime">Opening Time:</label></td>
-            <td>
-              <input
-                type="time"
-                id="openingTime"
-                className='inpt'
-                value={formData.openingTime}
-                onChange={(e) => handleInputChange(e, 'openingTime')}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td><label htmlFor="closingTime">Closing Time:</label></td>
-            <td>
-              <input
-                type="time"
-                id="closingTime"
-                className='inpt'
-                value={formData.closingTime}
-                onChange={(e) => handleInputChange(e, 'closingTime')}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td><label htmlFor="refundPolicy">Refund Policy:</label></td>
-            <td>
-              <textarea
-                id="refundPolicy"
-                placeholder="Enter your refund policy"
-                className='inpt textbox'
-                value={formData.refundPolicy}
-                onChange={(e) => handleInputChange(e, 'refundPolicy')}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td><label htmlFor="returnPolicy">Return Policy:</label></td>
-            <td>
-              <textarea
-                id="returnPolicy"
-                placeholder="Enter your return policy"
-                className='inpt textbox'
-                value={formData.returnPolicy}
-                onChange={(e) => handleInputChange(e, 'returnPolicy')}
-              />
-            </td>
-          </tr>
-        </tbody>
-      </table>
+                <td><label htmlFor="openingTime">Opening Time:</label></td>
+                <td>
+                  <input
+                    type="time"
+                    id="openingTime"
+                    className='inpt'
+                    value={formData.openingTime}
+                    onChange={(e) => handleInputChange(e, 'openingTime')}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td><label htmlFor="closingTime">Closing Time:</label></td>
+                <td>
+                  <input
+                    type="time"
+                    id="closingTime"
+                    className='inpt'
+                    value={formData.closingTime}
+                    onChange={(e) => handleInputChange(e, 'closingTime')}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td><label htmlFor="refundPolicy">Refund Policy:</label></td>
+                <td>
+                  <textarea
+                    id="refundPolicy"
+                    placeholder="Enter your refund policy"
+                    className='inpt textbox'
+                    value={formData.refundPolicy}
+                    onChange={(e) => handleInputChange(e, 'refundPolicy')}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td><label htmlFor="returnPolicy">Return Policy:</label></td>
+                <td>
+                  <textarea
+                    id="returnPolicy"
+                    placeholder="Enter your return policy"
+                    className='inpt textbox'
+                    value={formData.returnPolicy}
+                    onChange={(e) => handleInputChange(e, 'returnPolicy')}
+                  />
+                </td>
+                </tr>
+                <tr>
+                <td><label htmlFor="tags">Tags:</label></td>
+                <td>
+                  <input
+                    type="text"
+                    id="tags"
+                    placeholder="Enter tags separated by commas"
+                    className='inpt'
+                    value={tags.join(', ')} // Display current tags as a comma-separated string
+                    onChange={handleTagInputChange}
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-);
+  );
 }
 
 export default Page;
 
-    
