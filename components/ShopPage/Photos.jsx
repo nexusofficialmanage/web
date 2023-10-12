@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ContactDetails() {
+function Photos() {
   return (
     <div>
       
@@ -8,4 +8,4 @@ function ContactDetails() {
   )
 }
 
-export default ContactDetails
+export default Photos

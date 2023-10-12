@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Dancing+Script');
 @import url('https://fonts.googleapis.com/css?family=Poppins');
 @import url('https://fonts.googleapis.com/css?family=Bitter');
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
 
 .shoppage{
     height: 100%;
@@ -12,7 +13,7 @@
     height: 450px;
 }
 
-.shopinfo{
+.shopinfobanner{
     width: 30%;
     display: flex;
     flex-direction: column;
@@ -53,20 +54,93 @@
     /* border-radius: 20px 0px 0px 20px; */
 }
 
+.shopnow:hover{
+    background-color: transparent;
+    color: black;
+    border: 1px solid black;
+}
+
+.shopinfo{
+    padding: 20px;
+}
+
+.tags{
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+}
+
+.tag{
+    padding: 2px;
+    border: 1px solid black;
+    border-radius: 2px;
+    font-size: 13px;
+}
+
+.detailstoggle{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.detailview{
+    padding: 20px
+}
+
+.detail{
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.detail:hover{
+    background-color: black;
+    color: white;
+}
+
 @media only screen and (max-width: 668px) {
     .firstsection{
         flex-direction: column;
     }
 
-    .shopinfo{
+    .shopinfobanner{
         width: 100%;
+        align-items: center;
     }
 
     .bannerimage{
         width: 100%;
     }
 
+    .shopname{
+        color: white;
+        font-family: 'Pacifico', cursive;
+    }
+
+    .shopdesc{
+        position: absolute;
+        top: 28%;
+        color: white;
+        font-size: 25px;
+        padding: 20px;
+        text-align: center;
+    }
+
     .shopnow{
-        display:none;
+        position:absolute;
+        top: 44%;
+        background-color: transparent;
+        border: 1px solid white;
+        color: white;
+    }
+
+    .shopnow:hover{
+        background-color: black;
+        color: white;
+    }
+
+    .detailstoggle{
+        font-size: 12px;
     }
   }
