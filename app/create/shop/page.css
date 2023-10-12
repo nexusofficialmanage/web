@@ -47,7 +47,6 @@ body {
   .shopinformationinput {
     display: flex;
     flex-direction: column;
-    margin: 20px;
   }
   
   .labelinput {
@@ -84,11 +83,11 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 400px;
+    height: 450px;
   }
   
   .imagealternator img {
-    width: 60%;
+    width: 70%;
     height: 90%;
     border-radius: 8px;
   }
@@ -96,6 +95,16 @@ body {
   @media only screen and (max-width: 768px) {
     .imagealternator {
       height: 300px;
+    }
+
+    .imagealternator img{
+      width: 80%;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .imagealternator img{
+      width: 100%;
     }
   }
   
