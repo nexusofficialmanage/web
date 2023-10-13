@@ -4,13 +4,16 @@ import './page.css';
 import { useSearchParams } from 'next/navigation';
 import { AiFillPlusCircle, AiOutlineMinusCircle } from 'react-icons/Ai';
 import { Tooltip } from "@nextui-org/react";
+import { useUser } from '@auth0/nextjs-auth0/client';
 
 function Page() {
   const searchParams = useSearchParams();
-  const userId = searchParams.get('userid');
+  const { user, error, isLoading } = useUser();
   const [images, setImages] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [imagecirlceicon, setimagecircleicon] = useState("/assests/images/clement-fusil-Fpqx6GGXfXs-unsplash.jpg");
+  const [selectedCategory, setSelectedCategory] = useState('');
+
   
   // State for tags
   const [tags, setTags] = useState([]);
@@ -27,6 +30,7 @@ function Page() {
   }, [images, currentIndex]);
 
   const [formData, setFormData] = useState({
+    userid: user,
     shopName: '',
     storeid: '',
     shopTagline: '',
@@ -55,7 +59,30 @@ function Page() {
     refundPolicy: '',
     returnPolicy: '',
     tags: [],
+    images: [],
+    category: '',
   });
+
+  const submitForm = () => {
+    fetch('/api/create/shop', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => {
+        if (response.status === 201) {
+          alert('Shop created successfully');
+        } else {
+          alert('Failed to create a new shop');
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  };
+  
 
   const handleInputChange = (e, field) => {
     const value = e.target.value;
@@ -84,8 +111,21 @@ function Page() {
   };
 
   const handleImageUpload = (e) => {
-    const newImages = [...images, URL.createObjectURL(e.target.files[0])];
-    setImages(newImages);
+    const file = e.target.files[0];
+    
+    const reader = new FileReader();
+    
+    reader.onload = (event) => {
+      const base64Image = event.target.result;
+
+      setImages([...images, base64Image]);
+      setFormData((prevData) => ({
+        ...prevData,
+        images: [...prevData.images, base64Image],
+      }));
+    };
+
+    reader.readAsDataURL(file);
   };
 
   const addPhoneNumberInput = () => {
@@ -464,9 +504,34 @@ function Page() {
                   />
                 </td>
               </tr>
+              <tr>
+                <td><label htmlFor="category">Category:</label></td>
+                <td>
+                  <select
+                    id="category"
+                    className="inpt"
+                    value={selectedCategory}
+                    onChange={(e) => setSelectedCategory(e.target.value)}
+                  >
+                    <option value="">Select a category</option>
+                    <option value="Clothing and Fashion">Clothing and Fashion</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Grocery">Grocery</option>
+                    <option value="Furniture">Furniture</option>
+                    <option value="Cosmetics">Cosmetics</option>
+                    <option value="Restaurants">Restaurants</option>
+                    <option value="Sporting Goods">Sporting Goods</option>
+                    <option value="Stationery">Stationery</option>
+                    <option value="Art and Crafts">Art and Crafts</option>
+                    <option value="Tech">Tech</option>
+                    <option value="Antiques">Antiques</option>
+                  </select>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
+        <button onClick={submitForm}>Submit</button>
       </div>
     </div>
   );

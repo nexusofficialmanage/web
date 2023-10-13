@@ -1,22 +1,34 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './page.css'
 import Description from '@/components/ShopPage/Description';
 import Overview from '@/components/ShopPage/Overview';
 import ContactDetails from '@/components/ShopPage/ContactDetails';
 import Reviews from '@/components/ShopPage/Reviews';
 import Photos from '@/components/ShopPage/Photos';
+import axios from 'axios';
 
-function page() {
-
+function page({shop}) {
   const [detail, setDetail] = useState("overview");
+  const [shopDetails, setShopDetails] = useState();
+
+  const getShopData = async () => {
+    const storeid = localStorage.getItem('storeid');
+    const response = await axios.get(`/api/display/shop/${storeid}`)
+    setShopDetails(response.data)
+    console.log(response.data);
+  }
+
+  useEffect(() => {
+    getShopData();
+  }, [])
 
   return (
     <div className='shoppage'>
       <div className='firstsection'>
         <div className='shopinfobanner'>
-          <div className='shopname'>My Shop</div>
-          <div className='shopdesc'>lorem ipsum lorem ipsum lorem ipsum lorem ipsum</div>
+          <div className='shopname'>{shopDetails?.shopName}</div>
+          <div className='shopdesc'>{shopDetails?.shopTagline}</div>
           <div className='shopnow'> Shop Now</div>
         </div>
         <div className='bannerimage'>
@@ -25,10 +37,13 @@ function page() {
       </div>
       <div>
         <div className='shopinfo'>
-          <div className='shopinfoshopname'>My Shop</div>
+          <div className='shopinfoshopname'>{shopDetails?.shopName}</div>
           <div className='tags'>
-            <div className='tag'>Information</div>
-            <div className='tag'>Technology</div>
+            {
+              shop?.tag.map((tag) => {
+                return <div className='tag'>{tag}</div>
+              })
+            }
           </div>
         </div>
         <div className='detailstoggle'>
@@ -39,11 +54,11 @@ function page() {
           <div className='detail' onClick={() => {setDetail('photos')}}>Photos</div>
         </div>
         <div className='detailview'>
-          {detail == "description" && <Description />}
+          {detail == "description" && <Description description={shopDetails?.description}/>}
           {detail == "overview" && <Overview />}
           {detail == "contactdetails" && <ContactDetails />}
           {detail == "reviews" && <Reviews />}
-          {detail == "photos" && <Photos />}
+          {detail == "photos" && <Photos images={shopDetails?.images}/>}
         </div>
       </div>
     </div>

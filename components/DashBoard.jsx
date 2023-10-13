@@ -17,14 +17,15 @@ function DashBoard() {
     router.push("/");
   }
 
-  useEffect(() => {
-    console.log(user?.sub);
-  })
+  const handleGoCreateShop = () => {
+    if(user)router.push(`/create/shop?${user}`);
+  }
 
   return (
     <div className='dashboard'>
       <div className='companyname btn' onClick={handleGotoHome}> Nexus </div>
       <div className='dashboardlinks'>
+        <div className='btn' onClick={handleGoCreateShop}>Set Up Your Shop</div>
         <div className='btn'> View Cart </div>
         {!user && <div onClick={handleLogin} className='btn'> Login </div>}
         <div className='btn'><UserLogoDropDown /></div>

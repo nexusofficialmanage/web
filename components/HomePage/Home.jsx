@@ -1,25 +1,37 @@
 'use client';
-
-import React from 'react'
+import React, { useState, useEffect} from 'react'
 import './Home.css'
 import Hero from './Hero';
 import ShopCard from './ShopCard';
-import ShopData from "./data/ShopData";
+import axios from 'axios';
+// import ShopData from "./data/ShopData";
 
 const Home = () => {
-  const data = (val, i) => {
-    return (
-      <>
-      {val.template && val.events_on && val.event_name ? <ShopCard
-        template={val.template}
-        events_on={val.events_on}
-        event_name={val.event_name}
-        event_para={val.event_para}
-      /> : <div className = "_message"><h6>No Shops Available</h6></div>
-  }
-      </>
-    );
-  };
+  // const data = (val, i) => {
+  //   return (
+  //     <>
+  //     {val.template && val.events_on && val.event_name ? <ShopCard
+  //       template={val.template}
+  //       events_on={val.events_on}
+  //       event_name={val.event_name}
+  //       event_para={val.event_para}
+  //     /> : <div className = "_message"><h6>No Shops Available</h6></div>
+  // }
+  //     </>
+  //   );
+  // };
+
+  const [allShops, setAllShops] = useState([]);
+
+  useEffect(() => {
+    const getData = async() => {
+      const response = await axios.get('/api/display/allshops');
+      console.log(response.data);
+      setAllShops(response.data);
+    }
+
+    getData();
+  }, [])
 
 
   return (
@@ -29,7 +41,9 @@ const Home = () => {
           <div className="container">
             <h1>Shops Nearby</h1>
               <div className="cards">
-                {ShopData.map(data)}
+                {allShops.map((data) => {
+                  return <ShopCard shop={data} key={data.storeid}/>
+                })}
               </div>
 
               <button className="view-btn">View all</button>
@@ -38,7 +52,9 @@ const Home = () => {
           <div className="container">
             <h1>Recommended Shops</h1>
               <div className="cards">
-                {ShopData.map(data)}
+                {allShops.map((data) => {
+                  return <ShopCard shop={data} key={data.storeid}/>
+                })}
               </div>
 
               <button className="view-btn">View all</button>
@@ -68,7 +84,9 @@ const Home = () => {
         <div className="container">
             <h1 className='personalized-heading'>Personalized Recommendations</h1>
               <div className="cards">
-                {ShopData.map(data)}
+                {allShops.map((data) => {
+                  return <ShopCard shop={data} key={data.storeid}/>
+                })}
               </div>
 
               <button className="view-btn">View all</button>
