@@ -3,6 +3,7 @@ import { UserProvider } from '@auth0/nextjs-auth0/client';
 import { useEffect, useState } from "react";
 import MobileNavbar from "@/components/MobileNavbar";
 import DashBoard from "../components/DashBoard";
+import Footer from "../components/Footer";
 
 export default function RootLayout({ children }) {
   const [isMobileView, setIsMobileView] = useState(false);
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
         <body>
           {!isMobileView && <DashBoard />}
           {children}
+          <Footer/>
           {isMobileView && <MobileNavbar />}
         </body>
       </UserProvider>
