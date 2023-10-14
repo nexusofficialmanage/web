@@ -12,7 +12,6 @@ function Page() {
   const [images, setImages] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [imagecirlceicon, setimagecircleicon] = useState("/assests/images/clement-fusil-Fpqx6GGXfXs-unsplash.jpg");
-  const [selectedCategory, setSelectedCategory] = useState('');
 
   
   // State for tags
@@ -499,7 +498,7 @@ function Page() {
                     id="tags"
                     placeholder="Enter tags separated by commas"
                     className='inpt'
-                    value={tags.join(', ')} // Display current tags as a comma-separated string
+                    // value={tags.join(', ')} // Display current tags as a comma-separated string
                     onChange={handleTagInputChange}
                   />
                 </td>
@@ -510,8 +509,7 @@ function Page() {
                   <select
                     id="category"
                     className="inpt"
-                    value={selectedCategory}
-                    onChange={(e) => setSelectedCategory(e.target.value)}
+                    onChange={(e) => handleInputChange(e, 'category')}
                   >
                     <option value="">Select a category</option>
                     <option value="Clothing and Fashion">Clothing and Fashion</option>
