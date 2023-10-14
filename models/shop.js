@@ -1,45 +1,51 @@
 import { Schema, model, models } from 'mongoose';
 
 const ShopSchema = new Schema({
-    owner: {
+    userid: {
         type: String,
-        unique: [true, 'id already exists'],
-    },
-    shopId: {
-        type: String,
-        unique: [true, "id already exists"],
+        required: true,
     },
     shopName: {
         type: String,
-        required: [true, 'Shop name is required'],
+        required: true,
     },
+    storeid: {
+        type: String,
+        unique: true,
+    },
+    shopTagline: String,
+    description: String,
     addressLine: {
         type: String,
-        required: [true, 'Address line is required'],
+        required: true,
     },
-    description: String,
-    phoneNumbers: {
-        type: [String],
-        required: [true, 'Phone number is required'],
+    pincode: String,
+    city: String,
+    state: String,
+    country: String,
+    phoneNumbers: [String],
+    emailIds: [String],
+    facebookLink: String,
+    twitterLink: String,
+    instagramLink: String,
+    openDays: {
+        sunday: Boolean,
+        monday: Boolean,
+        tuesday: Boolean,
+        wednesday: Boolean,
+        thursday: Boolean,
+        friday: Boolean,
+        saturday: Boolean,
     },
-    emailId: {
-        type: String,
-        required: [true, 'Email ID is required'],
-    },
-    shopType: String,
-    shopTiming: String,
-    pictures: [String],
-    openOnDays: [String],
-    productCategories: [String],
-    productListings: [String],
-    paymentMethods: [String],
-    shippingInfo: String,
-    returnPolicy: String,
+    openingTime: String,
+    closingTime: String,
     refundPolicy: String,
-    shopLogo: String,
-    socialMediaLinks: [String],
-    termsAndConditions: String,
-    privacyPolicy: String,
+    returnPolicy: String,
+    tags: [String],
+    images: [String],
+    category: String,
+    rating: String,
+    reviews: [String],
 });
 
 const Shop = models.Shop || model('Shop', ShopSchema);

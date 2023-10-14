@@ -1,59 +1,64 @@
-import Shop from "@models/shop";
-import { connectToDB } from "@utils/database";
+import Shop from "@/models/shop.js";
+import { connectToDB } from "@/utils/database";
 
 export const POST = async (request) => {
-    const { userId, 
-            shopId, 
-            shopName, 
-            addressLine, 
-            description, 
-            phoneNumbers, 
-            emailId, 
-            shopType,
-            shopTiming,
-            pictures,
-            openOnDays,
-            productCategories,
-            productListings,
-            paymentMethods,
-            shippingInfo,
-            returnPolicy,
-            refundPolicy,
-            shopLogo,
-            socialMediaLinks,
-            termsAndConditions,
-            privacyPolicy 
-        } = await request.json();
+    const {
+        userid,
+        shopName,
+        storeid,
+        shopTagline,
+        description,
+        addressLine,
+        pincode,
+        city,
+        state,
+        country,
+        phoneNumbers,
+        emailIds,
+        facebookLink,
+        twitterLink,
+        instagramLink,
+        openDays,
+        openingTime,
+        closingTime,
+        refundPolicy,
+        returnPolicy,
+        tags,
+        images,
+        category,
+    } = await request.json();
 
     try {
         await connectToDB();
-        const newShop = new Shop({ 
-            owner: userId,
-            shopId, 
-            shopName, 
-            addressLine, 
-            description, 
-            phoneNumbers, 
-            emailId, 
-            shopType,
-            shopTiming,
-            pictures,
-            openOnDays,
-            productCategories,
-            productListings,
-            paymentMethods,
-            shippingInfo,
-            returnPolicy,
+        const newShop = new Shop({
+            userid,
+            shopName,
+            storeid,
+            shopTagline,
+            description,
+            addressLine,
+            pincode,
+            city,
+            state,
+            country,
+            phoneNumbers,
+            emailIds,
+            facebookLink,
+            twitterLink,
+            instagramLink,
+            openDays,
+            openingTime,
+            closingTime,
             refundPolicy,
-            shopLogo,
-            socialMediaLinks,
-            termsAndConditions,
-            privacyPolicy 
+            returnPolicy,
+            tags,
+            images,
+            category,
         });
 
         await newShop.save();
-        return new Response(JSON.stringify(newShop), { status: 201 })
+        return new Response(JSON.stringify(newShop), { status: 201 });
     } catch (error) {
-        return new Response("Failed to create a new prompt", { status: 500 });
+        return new Response("Failed to create a new shop", { status: 500 });
     }
 }
