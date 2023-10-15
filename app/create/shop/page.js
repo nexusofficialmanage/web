@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import './page.css';
 import { useSearchParams } from 'next/navigation';
-import { AiFillPlusCircle, AiOutlineMinusCircle } from 'react-icons/Ai';
+import { AiFillPlusCircle, AiOutlineMinusCircle } from 'react-icons/ai';
 import { Tooltip } from "@nextui-org/react";
 import { useUser } from '@auth0/nextjs-auth0/client';
 
