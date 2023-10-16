@@ -1,8 +1,8 @@
 'use client';
 import React, { useState } from 'react';
 import './page.css';
-import Description from '@/components/ShopPage/Description';
-import Review from '@/components/ShopPage/Review';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from 'swiper/modules';
 import ProductCard from '@/components/ShopPage/ProductCard';
 
 function Page() {
@@ -15,18 +15,16 @@ function Page() {
         <div className="bannerinfo">
           <div className="bannershopname">Nexus</div>
           <div className="bannershoptagline">Lorem Ipsum Lorem Ipsum Lorem Ipsum</div>
-          <div className="shopnowbutton"><a href='#shopnow'>Shop Now</a></div>
+          <a href='#shopnow' className='shopnowbutton'>Shop Now</a>
         </div>
         <div className="bannerimage">
-          <img src="/assests/images/castle.jpg" className="zoomIn" alt="Castle" />
+          <img src="/assests/images/blackandwhiteshop.jpg" className="zoomIn" alt="Castle" />
         </div>
         <div className='viewcards'>
-        <div className='viewcard'>
-            <a href='#description'>
+          <a href='#description' className='viewcard'>
               <div>Description</div>
               <div className='viewcarddes'>Learn More about us</div>
-            </a>
-          </div>
+          </a>
           <div className='viewcard'>
             <div>Review</div>
             <div className='viewcarddes'>Enter our Review system to rate this shop and read other's reviews</div>

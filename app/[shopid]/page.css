@@ -40,9 +40,10 @@
 }
 
 .shopnowbutton:hover{
+    font-weight: bolder;
     cursor: pointer;
-    background-color: white;
-    color: black;
+    border: 2px solid #d1348a;
+    color: #d32384;
 }
 
 .viewcards{
@@ -66,6 +67,11 @@
     font-family: 'Dancing Script';
     cursor: pointer;
     width: 150px;
+}
+
+.viewcard:hover{
+    background-color: #d1348a;
+    transition: 0.01s;
 }
 
 .viewcarddes{
