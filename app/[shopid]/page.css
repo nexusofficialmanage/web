@@ -17,7 +17,7 @@
     z-index: 1;
     background: linear-gradient(to right, rgba(0, 0, 0, 0.5) 80%, transparent 100%);
     padding: 20px;
-    height: 600px;
+    height: 680px;
     width: 30%;
     align-items: center;
     justify-content: center;
@@ -76,18 +76,50 @@
 
 .bannerimage{
     width: 100%;
+    height: 680px;
 }
 
 .bannerimage img{
     width: 100%;
     object-fit: cover;
-    height: 600px;
+    height: 100%;
     filter: blur(2px); 
     filter: brightness(60%) contrast(100%);
     animation: zoomIn 1s forwards; /* Zoom in animation */
 
   /* Set initial state (zoomed out) */
     transform: scale(1);
+}
+
+.shopdetails{
+    background-color: #F7D9C4;
+    height: 540px;
+    width: 100%;
+}
+
+.descriptiondetails{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+}
+
+.descriptiondetailswriting{
+    width: 50%;
+}
+
+.descriptiondetailstitle{
+    font-size: 30px;
+    padding: 40px;
+    font-family: 'Dancing Script';
+}
+
+.descriptiondetailstext{
+    width: 100%;
+    padding: 30px;
+}
+
+.descriptionimage{
+    width: 50%;
 }
 
 .products{
