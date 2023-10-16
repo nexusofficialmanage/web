@@ -3,8 +3,11 @@ import React, { useState } from 'react';
 import './page.css';
 import Description from '@/components/ShopPage/Description';
 import Review from '@/components/ShopPage/Review';
+import ProductCard from '@/components/ShopPage/ProductCard';
 
 function Page() {
+
+  const products = [{name: 'Jeevan', rating: 4.2}, {name: 'Alexen', rating: 3.9}];
 
   return (
     <div className="shop">
@@ -15,7 +18,7 @@ function Page() {
           <div className="shopnowbutton">Shop Now</div>
         </div>
         <div className="bannerimage">
-          <img src="/assests/images/clement-fusil-Fpqx6GGXfXs-unsplash.jpg" className="zoomIn" alt="Castle" />
+          <img src="/assests/images/shopimage.jpg" className="zoomIn" alt="Castle" />
         </div>
         <div className='viewcards'>
           <div className='viewcard'>
@@ -27,6 +30,13 @@ function Page() {
             <div className='viewcarddes'>Enter our Review system to rate this shop and read other's reviews</div>
           </div>
         </div>
+      </div>
+      <div className='products'>
+        {
+          products.map((product) => {
+            return <ProductCard product={product}/>
+          })
+        }
       </div>
     </div>
   );

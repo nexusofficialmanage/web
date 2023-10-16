@@ -90,6 +90,12 @@
     transform: scale(1);
 }
 
+.products{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    padding: 40px;
+}
 
 @keyframes zoomIn {
     0% {

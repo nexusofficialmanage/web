@@ -1,0 +1,24 @@
+.product{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.productimage{
+    justify-self: center;
+    align-self: center;
+    width: 90%;
+    height: 90%;
+}
+
+.productdetail{
+    padding: 10px;
+}
+
+.productnamerating{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
