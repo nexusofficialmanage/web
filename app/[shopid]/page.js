@@ -1,20 +1,32 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './page.css';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
 import ProductCard from '@/components/ShopPage/ProductCard';
+import axios from 'axios';
+import { usePathname } from 'next/navigation';
 
 function Page() {
-
+  const pathname = usePathname();
+  const [shop, setShop] = useState({});
   const products = [{name: 'Jeevan', rating: 4.2}, {name: 'Alexen', rating: 3.9}];
+
+  useEffect(() => {
+    const shopDetail = async() => {
+      const response = await axios.get(`/api/display/shop${pathname}`);
+      console.log(response.data);
+      setShop(response.data);
+    }
+
+    shopDetail();
+
+  }, [])
 
   return (
     <div className="shop">
       <div className="banner">
         <div className="bannerinfo">
-          <div className="bannershopname">Nexus</div>
-          <div className="bannershoptagline">Lorem Ipsum Lorem Ipsum Lorem Ipsum</div>
+          <div className="bannershopname">{shop?.shopName}</div>
+          <div className="bannershoptagline">{shop?.shopTagline}</div>
           <a href='#shopnow' className='shopnowbutton'>Shop Now</a>
         </div>
         <div className="bannerimage">
@@ -40,7 +52,7 @@ function Page() {
           <div className='descriptiondetailswriting'>
             <div className='descriptiondetailstitle'>Here is a little bit about <span style={{color:'red'}}>Ourselves</span></div>
             <div className='descriptiondetailstext'>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempus massa nec vulputate condimentum. Nam ornare ullamcorper placerat. Etiam semper eros et tincidunt fringilla. Nunc luctus libero et justo aliquam tempor. Sed sodales vulputate dolor, in convallis ex fermentum eleifend. Nunc mauris est, mattis ac risus auctor, sollicitudin molestie ante. Nam suscipit venenatis tellus et rhoncus. Nulla eu suscipit leo. Cras eu fermentum quam, placerat vehicula ipsum. Nam elementum augue eu consectetur tempor. Integer consectetur sapien vel lacinia semper. Quisque at ex eget erat pretium scelerisque eu nec leo.
+              {shop?.description}
             </div>
           </div>
           <div className='descriptionimage'><img src='/assests/images/descriptionvector1.png'/></div>
@@ -53,42 +65,42 @@ function Page() {
           <div className='address'>
             <h2>Contact Information</h2>
             <p>
-              <strong>Address:</strong> 123 Main Street<br />
-              <strong>City:</strong> New York<br />
-              <strong>State:</strong> NY<br />
-              <strong>Country:</strong> USA
+              <strong>Address:</strong> {shop?.addressLine} <br />
+              <strong>City:</strong> {shop?.city} <br />
+              <strong>State:</strong> {shop?.state}<br />
+              <strong>Country:</strong> {shop?.country}
             </p>
-          </div>
-          <div className='contact-details'>
             <div className='phone'>
               <h3>Phone Numbers:</h3>
               <ul>
-                <li>+1 (123) 456-7890</li>
-                <li>+1 (987) 654-3210</li>
+                {shop.phoneNumbers && shop.phoneNumbers.map((phoneNumber) => {
+                  return <li>{phoneNumber}</li>
+                })}
               </ul>
             </div>
             <div className='email'>
               <h3>Email Addresses:</h3>
               <ul>
-                <li>info@example.com</li>
-                <li>support@example.com</li>
+                {shop.emailIds && shop.emailIds.map((emailId) => {
+                  return <li>{emailId}</li>
+                })}
               </ul>
             </div>
             <div className='social-media'>
               <h3>Social Media:</h3>
               <ul>
                 <li>
-                  <a href='https://www.facebook.com/shop'>
+                  <a href={shop?.facebookLink}>
                     Facebook
                   </a>
                 </li>
                 <li>
-                  <a href='https://www.twitter.com/shop'>
+                  <a href={shop?.twitterLink}>
                     Twitter
                   </a>
                 </li>
                 <li>
-                  <a href='https://www.instagram.com/shop'>
+                  <a href={`https://www.instagram.com/${shop?.instagramLink}`}>
                     Instagram
                   </a>
                 </li>
