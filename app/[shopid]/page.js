@@ -18,7 +18,7 @@ function Page() {
           <a href='#shopnow' className='shopnowbutton'>Shop Now</a>
         </div>
         <div className="bannerimage">
-          <img src="/assests/images/blackandwhiteshop.jpg" className="zoomIn" alt="Castle" />
+          <img src="/assests/images/indiankirana.jpg" className="zoomIn" alt="Castle" />
         </div>
         <div className='viewcards'>
           <a href='#description' className='viewcard'>
@@ -29,6 +29,10 @@ function Page() {
             <div>Review</div>
             <div className='viewcarddes'>Enter our Review system to rate this shop and read other's reviews</div>
           </div>
+          <a href='#contactus' className='viewcard'>
+              <div>Contact Us</div>
+              <div className='viewcarddes'>Wanna Get In Touch?</div>
+          </a>
         </div>
       </div>
       <div className='shopdetails'>
@@ -45,7 +49,7 @@ function Page() {
         <div className='contactdetailsvector'>
           <img src='/assests/images/contactdetailsvector1.png'/>
         </div>
-        <div className='contactinfo'>
+        <div className='contactinfo' id='contactus'>
           <div className='address'>
             <h2>Contact Information</h2>
             <p>
