@@ -99,7 +99,6 @@
 
 .shopdetails{
     background-color: #F7D9C4;
-    height: 540px;
     width: 100%;
 }
 
@@ -127,6 +126,53 @@
 .descriptionimage{
     width: 50%;
 }
+
+.contactdetails {
+    background-color: #F2C6DE;
+    height: 500px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .contactdetailsvector{
+    width: 50%;
+  }
+  
+  .contactinfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .address, .contact-details {
+    margin: 20px;
+  }
+  
+  h2, h3 {
+    font-family: 'Dancing Script';
+    color: #d1348a;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  a {
+    color: #d1348a;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
 
 .products{
     display: flex;

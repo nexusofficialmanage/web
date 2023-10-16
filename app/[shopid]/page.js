@@ -36,11 +36,63 @@ function Page() {
           <div className='descriptiondetailswriting'>
             <div className='descriptiondetailstitle'>Here is a little bit about <span style={{color:'red'}}>Ourselves</span></div>
             <div className='descriptiondetailstext'>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempus massa nec vulputate condimentum. Nam ornare ullamcorper placerat. Etiam semper eros et tincidunt fringilla. Nunc luctus libero et justo aliquam tempor. Sed sodales vulputate dolor, in convallis ex fermentum eleifend. Nunc mauris est, mattis ac risus auctor, sollicitudin molestie ante. Nam suscipit venenatis tellus et rhoncus. Nulla eu suscipit leo. Cras eu fermentum quam, placerat vehicula ipsum. Nam elementum augue eu consectetur tempor. Integer consectetur sapien vel lacinia semper. Quisque at ex eget erat pretium scelerisque eu nec leo.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempus massa nec vulputate condimentum. Nam ornare ullamcorper placerat. Etiam semper eros et tincidunt fringilla. Nunc luctus libero et justo aliquam tempor. Sed sodales vulputate dolor, in convallis ex fermentum eleifend. Nunc mauris est, mattis ac risus auctor, sollicitudin molestie ante. Nam suscipit venenatis tellus et rhoncus. Nulla eu suscipit leo. Cras eu fermentum quam, placerat vehicula ipsum. Nam elementum augue eu consectetur tempor. Integer consectetur sapien vel lacinia semper. Quisque at ex eget erat pretium scelerisque eu nec leo.
             </div>
           </div>
           <div className='descriptionimage'><img src='/assests/images/descriptionvector1.png'/></div>
         </div>
+        <div className='contactdetails'>
+        <div className='contactdetailsvector'>
+          <img src='/assests/images/contactdetailsvector1.png'/>
+        </div>
+        <div className='contactinfo'>
+          <div className='address'>
+            <h2>Contact Information</h2>
+            <p>
+              <strong>Address:</strong> 123 Main Street<br />
+              <strong>City:</strong> New York<br />
+              <strong>State:</strong> NY<br />
+              <strong>Country:</strong> USA
+            </p>
+          </div>
+          <div className='contact-details'>
+            <div className='phone'>
+              <h3>Phone Numbers:</h3>
+              <ul>
+                <li>+1 (123) 456-7890</li>
+                <li>+1 (987) 654-3210</li>
+              </ul>
+            </div>
+            <div className='email'>
+              <h3>Email Addresses:</h3>
+              <ul>
+                <li>info@example.com</li>
+                <li>support@example.com</li>
+              </ul>
+            </div>
+            <div className='social-media'>
+              <h3>Social Media:</h3>
+              <ul>
+                <li>
+                  <a href='https://www.facebook.com/shop'>
+                    Facebook
+                  </a>
+                </li>
+                <li>
+                  <a href='https://www.twitter.com/shop'>
+                    Twitter
+                  </a>
+                </li>
+                <li>
+                  <a href='https://www.instagram.com/shop'>
+                    Instagram
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
       </div>
       <div className='products' id='shopnow'>
         {
