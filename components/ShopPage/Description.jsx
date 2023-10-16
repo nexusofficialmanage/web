@@ -1,15 +1,20 @@
-import React from 'react';
-import './Description.css';
+import React from 'react'
 
-function Description({description}) {
+function Description() {
   return (
-    <div className='description'>
-      <div className='descriptionheading'>
-        Description
-      </div>
-      <div>
-        {description}
-      </div>
+    <div>
+      hello hello hello hello hello hello hello hellohello hellohello hellohello hello hello hello hello hello
+      hello hello hello hello hello hello hello hellohello hellohello hellohello hello hello hello hello hello
+      hello hello hello hello hello hello hello hellohello hellohello hellohello hello hello hello hello hello
+      hello hello hello hello hello hello hello hellohello hellohello hellohello hello hello hello hello hello
+      hello hello hello hello hello hello hello hellohello hellohello hellohello hello hello hello hello hello
+      hello hello hello hello hello hello hello hellohello hellohello hellohello hello hello hello hello hello
+      hello hello hello hello hello hello hello hellohello hellohello hellohello hello hello hello hello hello
+      hello hello hello hello hello hello hello hellohello hellohello hellohello hello hello hello hello hello
+      hello hello hello hello hello hello hello hellohello hellohello hellohello hello hello hello hello hello
+      hello hello hello hello hello hello hello hellohello hellohello hellohello hello hello hello hello hello
+      hello hello hello hello hello hello hello hellohello hellohello hellohello hello hello hello hello hello
+      hello hello hello hello hello hello hello hellohello hellohello hellohello hello hello hello hello hello
     </div>
   )
 }
