@@ -1,6 +1,6 @@
 import React from "react";
 import { GoDotFill } from "react-icons/go";
-import { PopUpStyle } from "./PopUpStyle.css";
+import "./PopUpStyle.css";
 
 const ShowPolicy = ({ closeModal }) => {
   return (

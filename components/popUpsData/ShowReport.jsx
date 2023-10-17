@@ -1,5 +1,5 @@
 import React from "react";
-import { PopUpStyle } from "./PopUpStyle.css";
+import "./PopUpStyle.css";
 // import styled from "styled-components";
 
 const ShowReport = ({ closeModal }) => {

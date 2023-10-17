@@ -10,22 +10,25 @@ function page () {
   const searchParams = useSearchParams();
   const { user, error, isLoading } = useUser();
   const [images, setImages] = useState([]);
+  const [rating, setRating] = useState(0);
   const [tags, setTags] = useState([]);
+  const ratings = [0, 1, 2, 3, 4, 5];
   const storeid = searchParams.get('storeid');
   console.log(storeid);
 
   const [formData, setFormData] = useState({
     storeid: storeid,
     productName: '',
-    description: '',
-    Availability: {
+    tags: [],
+    availability: {
       instock: false,
       outofstock: false,
     },
     price: 0,
-    tags: [],
-    images: [],
+    description: '',
     category: '',
+    rating: 0,
+    images: [],
   });
 
   const submitForm = () => {
@@ -48,6 +51,16 @@ function page () {
       .catch((error) => {
         console.error('Error:', error);
       });
+  };
+
+  const handleRatingChange = (e) => {
+    setRating(parseInt(e.target.value, 10));
+    const name = e.target.name;
+    const value = rating;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
   
 
@@ -87,12 +100,12 @@ function page () {
     }));
   };
 
-  const toggleAvailability = (Availability) => {
+  const toggleAvailability = (availability) => {
     setFormData((prevData) => ({
       ...prevData,
-      Availability: {
-        ...prevData.Availability,
-        [Availability]: !prevData.Availability[Availability],
+      availability: {
+        ...prevData.availability,
+        [availability]: !prevData.availability[availability],
       },
     }));
   };
@@ -150,14 +163,29 @@ function page () {
           />
         </div>
         <div className='avail'>
-          {Object.keys(formData.Availability).map((Availability) => (
-            <label key={Availability}>
+          {Object.keys(formData.availability).map((availability) => (
+            <label key={availability}>
               <input
                 type="checkbox"
-                checked={formData.Availability[Availability]}
-                onChange={() => toggleAvailability(Availability)}
+                checked={formData.availability[availability]}
+                onChange={() => toggleAvailability(availability)}
               />
-              {Availability.charAt(0).toUpperCase() + Availability.slice(1)}
+              {availability.charAt(0).toUpperCase() + availability.slice(1)}
+            </label>
+          ))}
+        </div>
+        <div className='product-rating'>
+          <span>Rating:</span>
+          {ratings.map((value) => (
+            <label key={value}>
+              <input
+                type='radio'
+                value={value}
+                checked={rating === value}
+                onChange={handleRatingChange}
+                name="rating"
+              />
+              {value}
             </label>
           ))}
         </div>

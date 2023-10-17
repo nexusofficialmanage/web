@@ -21,6 +21,14 @@ const ProductSchema = new Schema({
         type: String,
         required: true,
     },
+    category: {
+        type: String,
+        required: true,
+    },
+    rating: {
+        type: Number,
+        required: true,
+    },
     images: [String],
 });
 

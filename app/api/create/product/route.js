@@ -3,7 +3,7 @@ import { connectToDB } from "@/utils/database";
 import mongoose from "mongoose";
 
 export const POST = async (req) => {
-    const { storeid, productName, productid, Availability, price, description, category, images, tags } = await req.json();
+    const { storeid, productName, tags, availability, price, description, category, rating, images } = await req.json();
 
     try {
         await connectToDB();
@@ -14,12 +14,13 @@ export const POST = async (req) => {
             // Create a new product object
             const product = {
                 productName,
-                Availability,
-                price,
-                description,
-                category,
-                images,
-                tags,
+                tags, 
+                availability, 
+                price, 
+                description, 
+                category, 
+                rating, 
+                images
             };
 
             // Push the product into the shop's products array
