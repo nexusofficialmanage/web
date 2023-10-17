@@ -182,7 +182,7 @@
     }
   }
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 700px) {
 
     .bannerinfo{
       width: 50%;
@@ -198,5 +198,21 @@
 
     .descriptiondetailswriting{
       width: 100%;
+    }
+  }
+
+  @media only screen and (max-width: 1100px) {
+    .viewcards{
+      left: 40%;
+    }
+  }
+
+  @media only screen and (max-width: 840px) {
+    .viewcards{
+      display: none;
+    }
+
+    .bannerinfo{
+      width: 50%;
     }
   }
