@@ -1,0 +1,67 @@
+  .product-details {
+    background-color: lightblue;
+    margin: 10%;
+    padding:5%;
+    border-radius: 15px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-images input {
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  .product-details input,
+  .product-details textarea {
+    width: 50vw;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+
+  .product-details input:hover{
+    border: 1px solid #000;
+    background-color: aqua;
+  }
+
+  .product-details input:focus{
+    outline: none;
+  }
+  
+  .product-details textarea {
+    height: 100px;
+  }
+  
+  .product-details .open-days label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  /* Style for the product tags input */
+  .product-tags-input {
+    width: 50%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  .sbt-btn{
+    padding: 1%;
+    border-radius: 25px;
+    background-color:blue;
+    color:white;
+  }
+
+  .avail {
+    display: flex;
+    align-items: center;
+  }
+  
+  input[type="checkbox"],
+  input[type="radio"]{
+    width: 1.5em;
+    height: 1.5em;
+    margin-right: 0.65rem;
+  }

@@ -46,8 +46,46 @@ const ShopSchema = new Schema({
     category: String,
     rating: String,
     reviews: [String],
+    products: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Product'
+    }],
 });
 
+const ProductSchema = new Schema({
+    productName: {
+        type: String,
+        required: true,
+    },
+    productId: {
+        type: String,
+        required: true,
+    },
+    tag: {
+        type: String,
+        required: true,
+    },
+    Availability: {
+        instock: Boolean,
+        outofstock: Boolean,
+    },
+    price: {
+        type: Number,
+        required: true,
+    },
+    description: {
+        type: String,
+        required: true,
+    },
+    category: {
+        type: String,
+        required: true,
+    },
+    images: [String],
+});
+
+
+const Product = models.Product || model('Product', ProductSchema);
 const Shop = models.Shop || model('Shop', ShopSchema);
 
-export default Shop;
+export { Product, Shop };

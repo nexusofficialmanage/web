@@ -18,7 +18,7 @@ function DashBoard() {
   }
 
   const handleGoCreateShop = () => {
-    if(user)router.push(`/create/shop?${user}`);
+    if(user)router.push(`/create/product?${user}`);
   }
 
   return (

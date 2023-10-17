@@ -1,6 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import './page.css'
+import { useRouter } from 'next/navigation';
 import Description from '@/components/ShopPage/Description';
 import Overview from '@/components/ShopPage/Overview';
 import ContactDetails from '@/components/ShopPage/ContactDetails';
@@ -9,8 +10,16 @@ import Photos from '@/components/ShopPage/Photos';
 import axios from 'axios';
 
 function page({shop}) {
+  const router = useRouter();
   const [detail, setDetail] = useState("overview");
   const [shopDetails, setShopDetails] = useState();
+
+  
+
+  const handleGoToAddProduct = () => {
+    const storeid = localStorage.getItem('storeid');
+    router.push(`/create/product?${storeid}`);
+  }
 
   const getShopData = async () => {
     const storeid = localStorage.getItem('storeid');
@@ -46,6 +55,7 @@ function page({shop}) {
             }
           </div>
         </div>
+        <button onClick={handleGoToAddProduct}>Add a product</button>
         <div className='detailstoggle'>
           <div className='detail' onClick={() => {setDetail('overview')}}>Overview</div>
           <div className='detail' onClick={() => {setDetail('description')}}>Description</div>

@@ -54,6 +54,7 @@ export const POST = async (request) => {
             tags,
             images,
             category,
+            products: [],
         });
 
         await newShop.save();
