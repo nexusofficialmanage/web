@@ -1,7 +1,7 @@
 import { useRouter } from 'next/navigation';
 import React from 'react'
 import '../app/globals.css'
-import { AiOutlineHome, AiOutlineShoppingCart } from 'react-icons/Ai';
+import { AiOutlineHome, AiOutlineShoppingCart } from 'react-icons/ai';
 import './MobileNavbar.css'
 import UserLogoDropDown from './UserLogoDropDown';
 

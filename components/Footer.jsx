@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { FooterStyle } from "./Footer.css";
+import { useRouter } from "next/navigation";
 
 import { AiOutlineCopyright } from "react-icons/ai";
 import { BsDot } from "react-icons/bs";
@@ -18,6 +19,12 @@ const Footer = () => {
   const closePolicy = () => setShowPolicy(false);
   const closeTermCondition = () => setShowTermCondition(false);
   const closeReport = () => setShowReport(false);
+
+  const router = useRouter();
+
+  const handleLogOut = () => {
+    router.push('/api/auth/logout');
+  }
 
   return (
     <>
@@ -42,7 +49,7 @@ const Footer = () => {
                   <p>My Profile</p>
                 </li>
                 <li className="links-element">
-                  <button className="logout-btn"> Logout </button>
+                  <button className="logout-btn" onClick={handleLogOut}> Logout </button>
                 </li>
               </ul>
             </div>

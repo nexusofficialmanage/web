@@ -1,15 +1,25 @@
-.productcard{
+.product{
+    display: flex;
+    flex-direction: column;
     width: 200px;
-    margin: 20px;
-    padding: 2px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 8px;
 }
 
 .productimage{
-    background-color: whitesmoke;
+    justify-self: center;
+    align-self: center;
+    width: 90%;
+    height: 90%;
 }
 
-.productinformation{
+.productdetail{
     padding: 10px;
+}
+
+.productnamerating{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

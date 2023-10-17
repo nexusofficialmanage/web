@@ -1,14 +1,17 @@
-import React from 'react'
-import './ProductCard.css'
+import React from 'react';
+import './ProductCard.css';
 
-function ProductCard({productDetails}) {
+function ProductCard({product}) {
   return (
-    <div className='productcard'>
+    <div className='product'>
       <div className='productimage'>
-        <img src='./assests/images/coat.jpg'/>
+        <img src='assests/images/dosa.png' />
       </div>
-      <div className='productinformation'>
-        <div>{productDetails.productName}</div>
+      <div className='productdetail'>
+        <div className='productnamerating'>
+            <div>{product?.name}</div>
+            <div>⭐​​ {product?.rating}</div>
+        </div>
       </div>
     </div>
   )
