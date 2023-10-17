@@ -1,15 +1,34 @@
-'use client';
-import React, { useEffect, useState } from 'react';
-import './page.css';
-import ProductCard from '@/components/ShopPage/ProductCard';
+'use client'
+import React, { useEffect, useState } from 'react'
+import './page.css'
+import { useRouter } from 'next/navigation';
+import Description from '@/components/ShopPage/Description';
+import Overview from '@/components/ShopPage/Overview';
+import ContactDetails from '@/components/ShopPage/ContactDetails';
+import Reviews from '@/components/ShopPage/Reviews';
+import Photos from '@/components/ShopPage/Photos';
 import axios from 'axios';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 
-function Page() {
-  const pathname = usePathname();
-  const [shop, setShop] = useState({});
-  const products = [{name: 'Jeevan', rating: 4.2}, {name: 'Alexen', rating: 3.9}];
+function page({shop}) {
+  const router = useRouter();
+  const [detail, setDetail] = useState("overview");
+  const [shopDetails, setShopDetails] = useState();
+
+  
+
+  const handleGoToAddProduct = () => {
+    const storeid = localStorage.getItem('storeid');
+    router.push(`/create/product?${storeid}`);
+  }
+
+  const getShopData = async () => {
+    const storeid = localStorage.getItem('storeid');
+    const response = await axios.get(`/api/display/shop/${storeid}`)
+    setShopDetails(response.data)
+    console.log(response.data);
+  }
 
   useEffect(() => {
     const shopDetail = async() => {
@@ -104,6 +123,7 @@ function Page() {
             </div>
           </div>
         </div>
+        <button onClick={handleGoToAddProduct}>Add a product</button>
         </div>
       <div className='products' id='shopnow'>
         {
