@@ -30,7 +30,7 @@ export const POST = async (req) => {
             await shop.save();
             console.log("product created and saved")
 
-            return new Response(JSON.stringify(shop), { status: 201 });
+            return new Response(JSON.stringify(shop), { status: 200 });
         } else {
             return new Response({ message: "Could not add products" });
         }
