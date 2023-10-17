@@ -23,6 +23,7 @@ function page () {
       instock: false,
       outofstock: false,
     },
+    price,
     tags: [],
     images: [],
     category: '',
@@ -128,6 +129,14 @@ function page () {
           <textarea 
             placeholder='Product Description'
             name="description"
+            onChange={handleInputChange}
+            className='product-description-input'
+          />
+        </div>
+        <div className='product-price'>
+          <textarea 
+            placeholder='Price'
+            name="price"
             onChange={handleInputChange}
             className='product-description-input'
           />
