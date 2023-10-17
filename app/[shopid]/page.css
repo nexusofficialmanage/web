@@ -29,7 +29,6 @@
 
 .bannershopname{
     font-size: 50px;
-    font-family: 'montserrat';
     font-weight: 100;
 }
 
@@ -110,7 +109,7 @@
 .descriptiondetails{
     display: flex;
     flex-direction: row;
-    /* justify-content: space-between; */
+    justify-content: space-between;
 }
 
 .descriptiondetailswriting{
@@ -132,19 +131,6 @@
     width: 50%;
 }
 
-.contactdetails {
-    background-color: #F2C6DE;
-    height: fit-content;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  }
-  .contactdetailsvector{
-    width: 50%;
-  }
-  
   .contactinfo {
     display: flex;
     flex-direction: column;
@@ -153,10 +139,11 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin: 20px;
   }
   
   .address, .contact-details {
-    margin: 20px;
+    margin: 30px;
   }
   
   h2, h3 {
@@ -192,5 +179,24 @@
     }
     100% {
       transform: scale(1); /* Actual size */
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+
+    .bannerinfo{
+      width: 50%;
+    }
+
+    .viewcards{
+      display: none;
+    }
+
+    .descriptiondetails{
+      flex-direction: column;
+    }
+
+    .descriptiondetailswriting{
+      width: 100%;
     }
   }

@@ -55,61 +55,55 @@ function Page() {
               {shop?.description}
             </div>
           </div>
-          <div className='descriptionimage'><img src='/assests/images/descriptionvector1.png'/></div>
-        </div>
-        <div className='contactdetails'>
-        <div className='contactdetailsvector'>
-          <img src='/assests/images/contactdetailsvector1.png'/>
-        </div>
-        <div className='contactinfo' id='contactus'>
-          <div className='address'>
-            <h2>Contact Information</h2>
-            <p>
-              <strong>Address:</strong> {shop?.addressLine} <br />
-              <strong>City:</strong> {shop?.city} <br />
-              <strong>State:</strong> {shop?.state}<br />
-              <strong>Country:</strong> {shop?.country}
-            </p>
-            <div className='phone'>
-              <h3>Phone Numbers:</h3>
-              <ul>
-                {shop.phoneNumbers && shop.phoneNumbers.map((phoneNumber) => {
-                  return <li>{phoneNumber}</li>
-                })}
-              </ul>
-            </div>
-            <div className='email'>
-              <h3>Email Addresses:</h3>
-              <ul>
-                {shop.emailIds && shop.emailIds.map((emailId) => {
-                  return <li>{emailId}</li>
-                })}
-              </ul>
-            </div>
-            <div className='social-media'>
-              <h3>Social Media:</h3>
-              <ul>
-                <li>
-                  <a href={shop?.facebookLink}>
-                    Facebook
-                  </a>
-                </li>
-                <li>
-                  <a href={shop?.twitterLink}>
-                    Twitter
-                  </a>
-                </li>
-                <li>
-                  <a href={`https://www.instagram.com/${shop?.instagramLink}`}>
-                    Instagram
-                  </a>
-                </li>
-              </ul>
+          <div className='contactinfo'>
+            <div className='address'>
+              <h2>Contact Information</h2>
+              <p>
+                <strong>Address:</strong> {shop?.addressLine} <br />
+                <strong>City:</strong> {shop?.city} <br />
+                <strong>State:</strong> {shop?.state}<br />
+                <strong>Country:</strong> {shop?.country}
+              </p>
+              <div className='phone'>
+                <h3>Phone Numbers:</h3>
+                <ul>
+                  {shop.phoneNumbers && shop.phoneNumbers.map((phoneNumber) => {
+                    return <li>{phoneNumber}</li>
+                  })}
+                </ul>
+              </div>
+              <div className='email'>
+                <h3>Email Addresses:</h3>
+                <ul>
+                  {shop.emailIds && shop.emailIds.map((emailId) => {
+                    return <li>{emailId}</li>
+                  })}
+                </ul>
+              </div>
+              <div className='social-media'>
+                <h3>Social Media:</h3>
+                <ul>
+                  <li>
+                    <a href={shop?.facebookLink}>
+                      Facebook
+                    </a>
+                  </li>
+                  <li>
+                    <a href={shop?.twitterLink}>
+                      Twitter
+                    </a>
+                  </li>
+                  <li>
+                    <a href={`https://www.instagram.com/${shop?.instagramLink}`}>
+                      Instagram
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      </div>
+        </div>
       <div className='products' id='shopnow'>
         {
           products.map((product) => {
