@@ -4,6 +4,7 @@ import './page.css';
 import ProductCard from '@/components/ShopPage/ProductCard';
 import axios from 'axios';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 
 function Page() {
   const pathname = usePathname();
