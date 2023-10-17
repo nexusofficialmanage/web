@@ -30,7 +30,7 @@ function Page() {
           <a href='#shopnow' className='shopnowbutton'>Shop Now</a>
         </div>
         <div className="bannerimage">
-          <img src="/assests/images/indiankirana.jpg" className="zoomIn" alt="Castle" />
+          <img src="/assests/images/castle.jpg" className="zoomIn" alt="Castle" />
         </div>
         <div className='viewcards'>
           <a href='#description' className='viewcard'>
