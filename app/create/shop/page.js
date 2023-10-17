@@ -3,8 +3,9 @@ import React, { useState, useEffect } from 'react';
 import './page.css';
 import { useSearchParams } from 'next/navigation';
 import { AiFillPlusCircle, AiOutlineMinusCircle } from 'react-icons/ai';
-import { Tooltip } from "@nextui-org/react";
+import { Tooltip, User } from "@nextui-org/react";
 import { useUser } from '@auth0/nextjs-auth0/client';
+import axios from 'axios';
 
 function Page() {
   const searchParams = useSearchParams();
@@ -12,10 +13,16 @@ function Page() {
   const [images, setImages] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [imagecirlceicon, setimagecircleicon] = useState("/assests/images/clement-fusil-Fpqx6GGXfXs-unsplash.jpg");
+  const [Userid, setUserid] = useState("");
 
   
   // State for tags
   const [tags, setTags] = useState([]);
+
+  useEffect(() => {
+    console.log("hello");
+    if(user)setUserid(user.sub)
+  }, [user])
 
   useEffect(() => {
     if (images.length > 0) {
@@ -29,7 +36,7 @@ function Page() {
   }, [images, currentIndex]);
 
   const [formData, setFormData] = useState({
-    userid: user,
+    userid: '',
     shopName: '',
     storeid: '',
     shopTagline: '',
@@ -62,25 +69,29 @@ function Page() {
     category: '',
   });
 
-  const submitForm = () => {
-    fetch('/api/create/shop', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    })
-      .then((response) => {
+  const submitForm = async() => {
+
+    setFormData((prevData) => ({
+      ...prevData,
+      userid: user?.sub,
+    }));
+
+    console.log(formData);
+    console.log(user);
+
+    try{
+        const response = await axios.post('/api/create/shop', formData);
         if (response.status === 201) {
           alert('Shop created successfully');
         } else {
-          alert('Failed to create a new shop');
+          console.log(response)
+          alert("Failed to create Shop");
         }
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
-  };
+      }
+      catch(error){
+        alert(error.message)
+      }
+    }
   
 
   const handleInputChange = (e, field) => {

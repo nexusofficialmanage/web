@@ -2,30 +2,23 @@
 import React, { useEffect, useState } from 'react'
 import './page.css'
 import { useRouter } from 'next/navigation';
-import Description from '@/components/ShopPage/Description';
-import Overview from '@/components/ShopPage/Overview';
-import ContactDetails from '@/components/ShopPage/ContactDetails';
-import Reviews from '@/components/ShopPage/Reviews';
-import Photos from '@/components/ShopPage/Photos';
 import axios from 'axios';
 import { usePathname } from 'next/navigation';
-import Image from 'next/image';
+import ProductCard from '@/components/ShopPage/ProductCard';
 
-function page({shop}) {
+function page() {
   const router = useRouter();
   const [detail, setDetail] = useState("overview");
-  const [shopDetails, setShopDetails] = useState();
-
-  
+  const [shop, setShop] = useState();
+  const pathname = usePathname();
 
   const handleGoToAddProduct = () => {
-    const storeid = localStorage.getItem('storeid');
-    router.push(`/create/product?${storeid}`);
+    const storeid = pathname.substring(1);
+    router.push(`/create/product?storeid=${storeid}`);
   }
 
   const getShopData = async () => {
-    const storeid = localStorage.getItem('storeid');
-    const response = await axios.get(`/api/display/shop/${storeid}`)
+    const response = await axios.get(`/api/display/shop${pathname}`)
     setShopDetails(response.data)
     console.log(response.data);
   }
@@ -50,7 +43,7 @@ function page({shop}) {
           <a href='#shopnow' className='shopnowbutton'>Shop Now</a>
         </div>
         <div className="bannerimage">
-          <img src="/assests/images/castle.jpg" className="zoomIn" alt="Castle" />
+          <img src={shop?.images[0]} className="zoomIn" alt="Castle" />
         </div>
         <div className='viewcards'>
           <a href='#description' className='viewcard'>
@@ -87,7 +80,7 @@ function page({shop}) {
               <div className='phone'>
                 <h3>Phone Numbers:</h3>
                 <ul>
-                  {shop.phoneNumbers && shop.phoneNumbers.map((phoneNumber) => {
+                  {shop?.phoneNumbers && shop?.phoneNumbers.map((phoneNumber) => {
                     return <li>{phoneNumber}</li>
                   })}
                 </ul>
@@ -95,7 +88,7 @@ function page({shop}) {
               <div className='email'>
                 <h3>Email Addresses:</h3>
                 <ul>
-                  {shop.emailIds && shop.emailIds.map((emailId) => {
+                  {shop?.emailIds && shop?.emailIds.map((emailId) => {
                     return <li>{emailId}</li>
                   })}
                 </ul>
@@ -127,7 +120,9 @@ function page({shop}) {
         </div>
       <div className='products' id='shopnow'>
         {
-          products.map((product) => {
+          shop && 
+          shop.products.map((product) => {
+            {console.log(product)}
             return <ProductCard product={product}/>
           })
         }
@@ -136,4 +131,4 @@ function page({shop}) {
   );
 }
 
-export default Page;
+export default page;

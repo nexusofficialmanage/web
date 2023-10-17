@@ -1,5 +1,29 @@
 import { Schema, model, models } from 'mongoose';
 
+const ProductSchema = new Schema({
+    productName: {
+        type: String,
+        required: true,
+    },
+    tags: {
+        type: [String],
+        required: true,
+    },
+    availability: {
+        instock: Boolean,
+        outofstock: Boolean,
+    },
+    price: {
+        type: Number,
+        required: true,
+    },
+    description: {
+        type: String,
+        required: true,
+    },
+    images: [String],
+});
+
 const ShopSchema = new Schema({
     userid: {
         type: String,
@@ -46,46 +70,9 @@ const ShopSchema = new Schema({
     category: String,
     rating: String,
     reviews: [String],
-    products: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Product'
-    }],
+    products: [ProductSchema],
 });
 
-const ProductSchema = new Schema({
-    productName: {
-        type: String,
-        required: true,
-    },
-    productId: {
-        type: String,
-        required: true,
-    },
-    tag: {
-        type: String,
-        required: true,
-    },
-    Availability: {
-        instock: Boolean,
-        outofstock: Boolean,
-    },
-    price: {
-        type: Number,
-        required: true,
-    },
-    description: {
-        type: String,
-        required: true,
-    },
-    category: {
-        type: String,
-        required: true,
-    },
-    images: [String],
-});
-
-
-const Product = models.Product || model('Product', ProductSchema);
 const Shop = models.Shop || model('Shop', ShopSchema);
 
-export { Product, Shop };
+export { Shop };

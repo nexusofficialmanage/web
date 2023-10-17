@@ -1,4 +1,4 @@
-import Shop from "@/models/shop.js";
+import {Shop} from "@/models/shop.js";
 import { connectToDB } from "@/utils/database";
 
 export const POST = async (request) => {
@@ -54,12 +54,12 @@ export const POST = async (request) => {
             tags,
             images,
             category,
-            products: [],
         });
 
         await newShop.save();
         return new Response(JSON.stringify(newShop), { status: 201 });
     } catch (error) {
-        return new Response("Failed to create a new shop", { status: 500 });
+        console.log(error.message);
+        return new Response(error, { status: 500 });
     }
 }

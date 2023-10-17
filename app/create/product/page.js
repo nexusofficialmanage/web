@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import './page.css';
 import { useSearchParams } from 'next/navigation';
-import { AiFillPlusCircle, AiOutlineMinusCircle } from 'react-icons/Ai';
+import { AiFillPlusCircle, AiOutlineMinusCircle } from 'react-icons/ai';
 import { Tooltip } from "@nextui-org/react";
 import { useUser } from '@auth0/nextjs-auth0/client';
 
@@ -12,24 +12,24 @@ function page () {
   const [images, setImages] = useState([]);
   const [tags, setTags] = useState([]);
   const storeid = searchParams.get('storeid');
+  console.log(storeid);
 
   const [formData, setFormData] = useState({
-    userid: user,
     storeid: storeid,
     productName: '',
-    productid: '',
     description: '',
     Availability: {
       instock: false,
       outofstock: false,
     },
-    price,
+    price: 0,
     tags: [],
     images: [],
     category: '',
   });
 
   const submitForm = () => {
+    console.log(formData);
     fetch('/api/create/product', {
       method: 'POST',
       headers: {
@@ -38,7 +38,8 @@ function page () {
       body: JSON.stringify(formData),
     })
       .then((response) => {
-        if (response.status === 201) {
+        console.log(response);
+        if (response.status === 200) {
           alert('Product added successfully');
         } else {
           alert('Failed to add a product');
@@ -80,10 +81,9 @@ function page () {
   const handleTagInputChange = (e) => {
     const value = e.target.value;
     const newTags = value.split(',').map((tag) => tag.trim());
-    setTags(newTags);
     setFormData((prevData) => ({
       ...prevData,
-      tags: tags,
+      tags: newTags,
     }));
   };
 
@@ -112,15 +112,6 @@ function page () {
             type="text"
             name="productName"
             placeholder='Product Name'
-            onChange={handleInputChange}
-            className='product-name-input'
-          />
-        </div>
-        <div className='product-id'>
-          <input 
-            type="text"
-            name="productid"
-            placeholder='Product ID'
             onChange={handleInputChange}
             className='product-name-input'
           />

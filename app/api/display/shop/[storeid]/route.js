@@ -1,4 +1,4 @@
-import Shop from "@/models/shop";
+import {Shop} from "@/models/shop";
 import { connectToDB } from "@/utils/database";
 
 export const GET = async (request, { params }) => {
