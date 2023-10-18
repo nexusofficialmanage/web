@@ -1,5 +1,5 @@
   .product-details {
-    background-color: lightblue;
+    background-color: #393E46;
     margin: 10%;
     padding:5%;
     border-radius: 15px;
@@ -7,6 +7,7 @@
     align-items: center;
     display: flex;
     flex-direction: column;
+    color: white;
   }
 
   .product-images input {
@@ -24,7 +25,7 @@
 
   .product-details input:hover{
     border: 1px solid #000;
-    background-color: aqua;
+    background-color: #222831;
   }
 
   .product-details input:focus{
@@ -50,7 +51,7 @@
   .sbt-btn{
     padding: 1%;
     border-radius: 25px;
-    background-color:blue;
+    background-color:black;
     color:white;
   }
 
@@ -65,3 +66,12 @@
     height: 1.5em;
     margin-right: 0.65rem;
   }
+
+  @media only screen and (max-width: 840px) {
+    .product-details{
+        margin: 0;
+        border-radius: 0;
+    }
+
+  
+}

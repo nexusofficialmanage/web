@@ -167,6 +167,15 @@
     text-decoration: underline;
   }
 
+  .shopowneroptions{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+    background-color: lightslategrey;
+    color: white;
+  }
 
   .products{
       display: flex;

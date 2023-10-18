@@ -19,6 +19,7 @@ function page () {
   const [formData, setFormData] = useState({
     storeid: storeid,
     productName: '',
+    productId: '',
     tags: [],
     availability: {
       instock: false,
@@ -127,6 +128,15 @@ function page () {
             placeholder='Product Name'
             onChange={handleInputChange}
             className='product-name-input'
+          />
+        </div>
+        <div className='product-id'>
+          <input 
+            type="text"
+            name="productId"
+            placeholder='Product Id'
+            onChange={handleInputChange}
+            className='product-id-input'
           />
         </div>
         <div className='product-description'>

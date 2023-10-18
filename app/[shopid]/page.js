@@ -17,9 +17,8 @@ function Page() {
   const pathname = usePathname();
   const [loading, setLoading] = useState(true); // Add a loading state
 
-  const handleGoToAddProduct = () => {
-    const storeid = pathname.substring(1);
-    router.push(`/create/product?storeid=${storeid}`);
+  const handleGotoProductManagement = () => {
+    router.push(`${shop.storeid}/ProductManagement`);
   }
 
   useEffect(() => {
@@ -129,8 +128,12 @@ function Page() {
                 </div>
               </div>
             </div>
-            {currentUser && <button onClick={handleGoToAddProduct}>Add a product</button>}
           </div>
+          {currentUser 
+            && 
+          <div className='shopowneroptions'> 
+            <div onClick={handleGotoProductManagement}>Enter Product Management System</div>
+          </div>}
           <div className='products' id='shopnow'>
             {shop && shop.products.map((product) => {
               {console.log(product)}
