@@ -65,7 +65,7 @@ function page() {
           <div className='descriptiondetailswriting'>
             <div className='descriptiondetailstitle'>Here is a little bit about <span style={{color:'red'}}>Ourselves</span></div>
             <div className='descriptiondetailstext'>
-              {shop?.description}
+              <p>{shop?.description}</p>
             </div>
           </div>
           <div className='contactinfo'>
