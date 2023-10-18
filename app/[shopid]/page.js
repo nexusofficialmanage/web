@@ -4,12 +4,16 @@ import './page.css'
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { usePathname } from 'next/navigation';
+import { useUser } from '@auth0/nextjs-auth0/client';
 import ProductCard from '@/components/ShopPage/ProductCard';
 
+
 function page() {
+  const { user, error, isLoading } = useUser();
   const router = useRouter();
   const [detail, setDetail] = useState("overview");
   const [shop, setShop] = useState();
+  const [currentUser, setCurrentUser] = useState(false);
   const pathname = usePathname();
 
   const handleGoToAddProduct = () => {
@@ -28,6 +32,9 @@ function page() {
       const response = await axios.get(`/api/display/shop${pathname}`);
       console.log(response.data);
       setShop(response.data);
+      if(response.data.userid === user.sub){
+        setCurrentUser(true);
+      }
     }
 
     shopDetail();
@@ -116,7 +123,7 @@ function page() {
             </div>
           </div>
         </div>
-        <button onClick={handleGoToAddProduct}>Add a product</button>
+        {currentUser && <button onClick={handleGoToAddProduct}>Add a product</button>}
         </div>
       <div className='products' id='shopnow'>
         {
