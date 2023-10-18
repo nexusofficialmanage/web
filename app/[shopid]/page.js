@@ -17,12 +17,6 @@ function page() {
     router.push(`/create/product?storeid=${storeid}`);
   }
 
-  const getShopData = async () => {
-    const response = await axios.get(`/api/display/shop${pathname}`)
-    setShopDetails(response.data)
-    console.log(response.data);
-  }
-
   useEffect(() => {
     const shopDetail = async() => {
       const response = await axios.get(`/api/display/shop${pathname}`);
