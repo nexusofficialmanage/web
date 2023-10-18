@@ -1,13 +1,10 @@
 'use client';
 
 import React from 'react';
-import { useRouter } from 'next/navigation';
-import { usePathname } from 'next/navigation';
 import { useParams } from 'next/navigation';
 
 function ProductDesc() {
   const searchParams = useParams();
-  const product = searchParams.get('prod');
 
   return (
     <div>
