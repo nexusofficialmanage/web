@@ -31,9 +31,9 @@ function Page() {
     images: [],
   });
 
-  const submitForm = () => {
+  const submitForm = async() => {
     console.log(formData);
-    fetch('/api/create/product', {
+    await fetch('/api/create/product', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

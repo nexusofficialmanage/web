@@ -24,6 +24,8 @@ export const POST = async (req) => {
                 images
             };
 
+            console.log(product)
+
             // Push the product into the shop's products array
             shop.products.push(product);
 
