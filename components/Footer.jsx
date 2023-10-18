@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { FooterStyle } from "./Footer.css";
 import { useRouter } from "next/navigation";
 
-import { AiOutlineCopyright } from "react-icons/Ai";
+import { AiOutlineCopyright } from "react-icons/ai";
 import { BsDot } from "react-icons/bs";
 
 import ShowPolicy from "./popUpsData/ShowPolicy";
