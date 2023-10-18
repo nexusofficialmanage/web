@@ -72,7 +72,9 @@ function page() {
           <div className='descriptiondetailswriting'>
             <div className='descriptiondetailstitle'>Here is a little bit about <span style={{color:'red'}}>Ourselves</span></div>
             <div className='descriptiondetailstext'>
-              {shop?.description}
+            {shop?.description.split('\n').map((line, index) => (
+              <div key={index}>{line}</div>
+            ))}
             </div>
           </div>
           <div className='contactinfo'>

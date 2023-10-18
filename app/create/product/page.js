@@ -54,9 +54,9 @@ function page () {
   };
 
   const handleRatingChange = (e) => {
-    setRating(parseInt(e.target.value, 10));
     const name = e.target.name;
-    const value = rating;
+    setRating(parseInt(e.target.value, 10));
+    const value = parseInt(e.target.value, 10);
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,

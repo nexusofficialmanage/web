@@ -1,9 +1,11 @@
+@import url('https://fonts.google.com/specimen/Cormorant+Garamond&display=swap');
+
 .dashboard{
     display: flex;
     flex-direction: row;
     justify-content: space-between; 
     padding: 8px;
-    font-family:cursive;
+    font-family: 'Cormorant Garamond';
 }
 
 .companyname{

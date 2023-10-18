@@ -1,5 +1,4 @@
-
-.mobilenavbar{
+.mobilenavbar {
     position: fixed;
     display: flex;
     flex-direction: row;
@@ -7,11 +6,22 @@
     bottom: 0;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+    width: 100vw;
     padding: 20px;
     backdrop-filter: blur(8px);
 }
 
-.icn{
+.icn {
     font-size: 40px;
+}
+
+/* Adjust for smaller screens */
+@media only screen and (max-width: 600px) {
+    .mobilenavbar {
+        padding: 10px;
+    }
+
+    .icn {
+        font-size: 40px;
+    }
 }

@@ -16,6 +16,7 @@ function DeliveryLocation() {
         `https://api.geoapify.com/v1/geocode/autocomplete?text=${address}&apiKey=a002422b48cc40f4afbeda869f4a476f`
       );
       setSuggestions(response.data.features);
+      console.log(response.data.features)
     } catch (error) {
       console.error(error);
     }
@@ -33,11 +34,11 @@ function DeliveryLocation() {
         placeholder="Enter your location"
       />
       <div className="suggestions">
-        {suggestions.map((suggestion) => (
-          <div className="suggestion">
-            {`${suggestion.properties.address_line1}, ${suggestion.properties.address_line2}, ${suggestion.properties.state}, ${suggestion.properties.country}`}
-          </div>
-        ))}
+        {suggestions.map((suggestion) => {
+          return <div className="suggestion">
+                    {`${suggestion.properties.address_line1}, ${suggestion.properties.address_line2}, ${suggestion.properties.state}, ${suggestion.properties.country}`}
+                  </div>
+        })}
       </div>
     </div>
   );
