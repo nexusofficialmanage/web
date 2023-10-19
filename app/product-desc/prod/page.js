@@ -1,18 +1,17 @@
 'use client';
 
 import React from 'react';
-import { useRouter } from 'next/navigation';
-import { usePathname } from 'next/navigation';
 import { useParams } from 'next/navigation';
 
 function ProductDesc() {
   const product = localstorage.getitem('product');
+  // const searchParams = useParams();
 
   return (
     <div>
-      <h1>Product Description</h1>
+      {/* <h1>Product Description</h1>
       <p>Product Name: {product}</p>
-      <p>Product Description:</p>
+      <p>Product Description:</p> */}
     </div>
   );
 }

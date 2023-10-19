@@ -1,0 +1,19 @@
+.productmanagement{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.dashboardproductmanagement{
+    display: flex;
+    justify-content: space-between;
+    background-color: #393E46;
+    color: white;
+    padding: 40px;
+}
+
+.productsdisplay{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

@@ -1,0 +1,56 @@
+.productmanagementcard{
+    display: flex;
+    flex-direction: row;
+    background-color: #DE8F5F;
+    width: 100%;
+    height: 70px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.productname{
+    width: 20%;
+}
+
+.productquantity{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 30%;
+}
+
+.productquantityincrementer{
+    background-color: white;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.productquantitydecrementer{
+    background-color: white;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.updateoption{
+    display: flex;
+    width: 10%;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+}
+.updateoption div{
+    padding: 10px;
+}
+
+@media only screen and (max-width: 840px) {
+    .productquantity{
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .productquantity{
+        width: 60%;
+    }
+}

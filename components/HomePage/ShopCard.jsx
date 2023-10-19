@@ -6,8 +6,7 @@ export default function ShopCard({shop}) {
   const router = useRouter();
 
   const handleGoToShop = () => {
-    localStorage.setItem('storeid', shop.storeid);
-    router.push(`/${shop.storeid}`)
+    router.push(`/${shop.storeid}`, { query: { shopData: shop } })
   }
 
   return (

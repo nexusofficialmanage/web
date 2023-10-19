@@ -9,6 +9,7 @@ function DeliveryLocation() {
   const geoApiKey = process.env.GEOAPIFY_API_KEY;
   const [suggestions, setSuggestions] = useState([]);
   const [inputValue, setInputValue] = useState('');
+  const [pressedValue, setPressedValue] = useState("");
 
   async function getSuggestions(address) {
     try {
@@ -27,7 +28,9 @@ function DeliveryLocation() {
       <input
         className="input-field"
         type='text'
+        value={pressedValue}
         onChange={(e) => {
+          setPressedValue(e.target.value)
           setInputValue(e.target.value);
           getSuggestions(e.target.value);
         }}
@@ -35,7 +38,9 @@ function DeliveryLocation() {
       />
       <div className="suggestions">
         {suggestions.map((suggestion) => {
-          return <div className="suggestion">
+          return <div className="suggestion" onClick={() => {
+                    setPressedValue(`${suggestion.properties.address_line1}, ${suggestion.properties.address_line2}, ${suggestion.properties.state}, ${suggestion.properties.country}`)
+                   }}>
                     {`${suggestion.properties.address_line1}, ${suggestion.properties.address_line2}, ${suggestion.properties.state}, ${suggestion.properties.country}`}
                   </div>
         })}

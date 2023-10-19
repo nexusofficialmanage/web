@@ -5,6 +5,10 @@ const ProductSchema = new Schema({
         type: String,
         required: true,
     },
+    productId: {
+        type: String,
+        required: true,
+    },
     tags: {
         type: [String],
         required: true,

@@ -1,12 +1,12 @@
-'use client'
-import React, { useState, useEffect } from 'react';
+'use client';
+import React, { useState } from 'react';
 import './page.css';
 import { useSearchParams } from 'next/navigation';
 import { AiFillPlusCircle, AiOutlineMinusCircle } from 'react-icons/ai';
 import { Tooltip } from "@nextui-org/react";
 import { useUser } from '@auth0/nextjs-auth0/client';
 
-function page () {
+function Page() {
   const searchParams = useSearchParams();
   const { user, error, isLoading } = useUser();
   const [images, setImages] = useState([]);
@@ -14,11 +14,11 @@ function page () {
   const [tags, setTags] = useState([]);
   const ratings = [0, 1, 2, 3, 4, 5];
   const storeid = searchParams.get('storeid');
-  console.log(storeid);
 
   const [formData, setFormData] = useState({
     storeid: storeid,
     productName: '',
+    productId: '',
     tags: [],
     availability: {
       instock: false,
@@ -31,9 +31,9 @@ function page () {
     images: [],
   });
 
-  const submitForm = () => {
+  const submitForm = async() => {
     console.log(formData);
-    fetch('/api/create/product', {
+    await fetch('/api/create/product', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -62,7 +62,6 @@ function page () {
       [name]: value,
     }));
   };
-  
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -89,7 +88,7 @@ function page () {
       ...prevData,
       [name]: value,
     }));
-  }
+  };
 
   const handleTagInputChange = (e) => {
     const value = e.target.value;
@@ -111,87 +110,103 @@ function page () {
   };
 
   return (
-      <div className='product-details'>
-        <div className='product-images'>
+    <div className='product-details'>
+      <div className='product-images'>
+        <input 
+          type="file"
+          onChange={handleImageUpload}
+          multiple
+          className='image-upload'
+        />
+      </div>
+      <div className='product-name'>
+        <input 
+          type="text"
+          name="productName"
+          placeholder='Product Name'
+          onChange={handleInputChange}
+          className='product-name-input'
+        />
+      </div>
+      
+        <div className='product-id'>
+        <Tooltip content='Give a unique product id' className='tooltip'>
           <input 
-            type="file"
-            onChange={handleImageUpload}
-            multiple
-            className='image-upload'
-          />
+              type="text"
+              name="productId"
+              placeholder='Product Id'
+              onChange={handleInputChange}
+              className='product-id-input'
+            />
+        </Tooltip>
         </div>
-        <div className='product-name'>
+      
+      <div className='product-description'>
+        <textarea 
+          placeholder='Product Description'
+          name="description"
+          onChange={handleInputChange}
+          className='product-description-input'
+        />
+      </div>
+      <div className='product-price'>
+        <Tooltip content='Give the cost of this particular product' className='tooltip'>
           <input 
-            type="text"
-            name="productName"
-            placeholder='Product Name'
-            onChange={handleInputChange}
-            className='product-name-input'
-          />
-        </div>
-        <div className='product-description'>
-          <textarea 
-            placeholder='Product Description'
-            name="description"
-            onChange={handleInputChange}
-            className='product-description-input'
-          />
-        </div>
-        <div className='product-price'>
-          <textarea 
             placeholder='Price'
+            type='number'
             name="price"
             onChange={handleInputChange}
             className='product-description-input'
           />
-        </div>
-        <div className='product-category'>
-          <input 
-            type="text"
-            placeholder='Product Category'
-            name="category"
-            onChange={handleInputChange}
-            className='product-category-input'
-          />
-        </div>
-        <div className='product-tags'>
-          <input 
-            type="text"
-            placeholder='Product Tags'
-            onChange={handleTagInputChange}
-            className='product-tags-input'
-          />
-        </div>
-        <div className='avail'>
-          {Object.keys(formData.availability).map((availability) => (
-            <label key={availability}>
-              <input
-                type="checkbox"
-                checked={formData.availability[availability]}
-                onChange={() => toggleAvailability(availability)}
-              />
-              {availability.charAt(0).toUpperCase() + availability.slice(1)}
-            </label>
-          ))}
-        </div>
-        <div className='product-rating'>
-          <span>Rating:</span>
-          {ratings.map((value) => (
-            <label key={value}>
-              <input
-                type='radio'
-                value={value}
-                checked={rating === value}
-                onChange={handleRatingChange}
-                name="rating"
-              />
-              {value}
-            </label>
-          ))}
-        </div>
-        <button className="sbt-btn" onClick={submitForm}>Submit</button>
+        </Tooltip>
       </div>
+      <div className='product-category'>
+        <input 
+          type="text"
+          placeholder='Product Category'
+          name="category"
+          onChange={handleInputChange}
+          className='product-category-input'
+        />
+      </div>
+      <div className='product-tags'>
+        <input 
+          type="text"
+          placeholder='Product Tags'
+          onChange={handleTagInputChange}
+          className='product-tags-input'
+        />
+      </div>
+      <div className='avail'>
+        {Object.keys(formData.availability).map((availability) => (
+          <label key={availability}>
+            <input
+              type="checkbox"
+              checked={formData.availability[availability]}
+              onChange={() => toggleAvailability(availability)}
+            />
+            {availability.charAt(0).toUpperCase() + availability.slice(1)}
+          </label>
+        ))}
+      </div>
+      <div className='product-rating'>
+        <span>Rating:</span>
+        {ratings.map((value) => (
+          <label key={value}>
+            <input
+              type='radio'
+              value={value}
+              checked={rating === value}
+              onChange={handleRatingChange}
+              name="rating"
+            />
+            {value}
+          </label>
+        ))}
+      </div>
+      <button className="sbt-btn" onClick={submitForm}>Submit</button>
+    </div>
   );
 }
 
-export default page;
+export default Page;
