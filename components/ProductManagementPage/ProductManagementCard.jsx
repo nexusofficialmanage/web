@@ -19,6 +19,7 @@ function ProductManagementCard({product}) {
       </div>
       <div className='updateoption'>{!updated?<div onClick={() => {
         setUpdated(true);
+        setProductQuantity(0);
       }} style={{backgroundColor: 'red', color: 'white'}}>Update</div> : <div>Upto Date</div>}</div>
     </div>
   )
