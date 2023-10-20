@@ -6,6 +6,7 @@ function ProductCard({ product }) {
   const router = useRouter();
 
   const handleClick = () => {
+    localStorage.setItem('product', JSON.stringify(product));
     router.push(`/product-desc/prod`);
   };
 
