@@ -34,6 +34,25 @@ const ProductSchema = new Schema({
         required: true,
     },
     images: [String],
+    brand:{
+        type: String,
+    },
+    features:{
+        type:[String],
+    },
+    colors: {
+        type: [String],
+    },
+    sizeVariants: {
+        type: [String],
+    },
+    reviews: [
+        {
+            userName: String,
+            rating: Number,
+            comment: String,
+        }
+    ],
 });
 
 const ShopSchema = new Schema({

@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import { AiFillPlusCircle, AiOutlineMinusCircle } from 'react-icons/ai';
 import { Tooltip } from "@nextui-org/react";
 import { useUser } from '@auth0/nextjs-auth0/client';
+import { color } from 'framer-motion';
 
 function Page() {
   const searchParams = useSearchParams();
@@ -13,7 +14,31 @@ function Page() {
   const [rating, setRating] = useState(0);
   const [tags, setTags] = useState([]);
   const ratings = [0, 1, 2, 3, 4, 5];
+  const [sizes, setSizes] = useState([]);
+  const [colors, setColor] = useState([]);
+  const [features, setFeatures] = useState([]);
   const storeid = searchParams.get('storeid');
+  const size_chart = {
+    'S': 'Small',
+    'M': 'Medium',
+    'L': 'Large',
+    'XL': 'Extra Large',
+    'XXL': 'Extra Extra Large',
+    'XXXL': 'Extra Extra Extra Large',
+  };
+  const color_chart = {
+    'red': 'Red',
+    'green': 'Green',
+    'blue': 'Blue',
+    'yellow': 'Yellow',
+    'black': 'Black',
+    'white': 'White',
+    'orange': 'Orange',
+    'purple': 'Purple',
+    'pink': 'Pink',
+    'brown': 'Brown',
+    'grey': 'Grey',
+  };
 
   const [formData, setFormData] = useState({
     storeid: storeid,
@@ -29,6 +54,11 @@ function Page() {
     category: '',
     rating: 0,
     images: [],
+    brand: '',
+    features: [],
+    colors: [],
+    sizeVariants: [],
+    reviews: []
   });
 
   const submitForm = async() => {
@@ -53,6 +83,15 @@ function Page() {
       });
   };
 
+  const handleFeaturesChange = (e) => {
+    const value = e.target.value;
+    setFeatures(value.split(',').map((feature) => feature.trim()));
+    setFormData((prevData) => ({
+      ...prevData,
+      features: features,
+    }));
+  };
+
   const handleRatingChange = (e) => {
     const name = e.target.name;
     setRating(parseInt(e.target.value, 10));
@@ -62,6 +101,29 @@ function Page() {
       [name]: value,
     }));
   };
+
+  const toggleSize = (size) => {
+    const updatedSizes = sizes.includes(size)
+      ? sizes.filter((s) => s !== size)
+      : [...sizes, size];
+    setSizes(updatedSizes);
+    setFormData((prevData) => ({
+      ...prevData,
+      sizeVariants: sizes,
+    }));
+  };
+
+  const toggleColors = (color) => {
+    const updatedColors = colors.includes(color)
+      ? colors.filter((s) => s !== color)
+      : [...colors, color];
+    setColor(updatedColors);
+    setFormData((prevData) => ({
+      ...prevData,
+      colors: colors,
+    }));
+  };
+
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -128,6 +190,16 @@ function Page() {
           className='product-name-input'
         />
       </div>
+
+      <div className='product-brand'>
+        <input 
+          type="text"
+          name="brand"
+          placeholder='Product Brand'
+          onChange={handleInputChange}
+          className='product-name-input'
+        />
+      </div>
       
         <div className='product-id'>
         <Tooltip content='Give a unique product id' className='tooltip'>
@@ -178,17 +250,46 @@ function Page() {
         />
       </div>
       <div className='avail'>
-        {Object.keys(formData.availability).map((availability) => (
-          <label key={availability}>
-            <input
-              type="checkbox"
-              checked={formData.availability[availability]}
-              onChange={() => toggleAvailability(availability)}
-            />
-            {availability.charAt(0).toUpperCase() + availability.slice(1)}
-          </label>
-        ))}
+        <div className='product-available'>Availability: 
+          {Object.keys(formData.availability).map((availability) => (
+            <label key={availability}>
+              <input
+                type="checkbox"
+                checked={formData.availability[availability]}
+                onChange={() => toggleAvailability(availability)}
+              />
+              {availability.charAt(0).toUpperCase() + availability.slice(1)}
+            </label>
+          ))}
+        </div>
+
+        <div className='sizes-available'>Size: 
+          {Object.keys(size_chart).map((size) => (
+            <label key={size}>
+              <input
+                type="checkbox"
+                checked={sizes.includes(size)}
+                onChange={() => toggleSize(size)}
+              />
+              {size}
+            </label>
+          ))}
+        </div>
+
+        <div className='colors-available'>Colors: 
+          {Object.keys(color_chart).map((color) => (
+            <label key={color}>
+              <input
+                type="checkbox"
+                checked={colors.includes(color)}
+                onChange={() => toggleColors(color)}
+              />
+              {color}
+            </label>
+          ))}
+        </div>
       </div>
+
       <div className='product-rating'>
         <span>Rating:</span>
         {ratings.map((value) => (
@@ -204,6 +305,16 @@ function Page() {
           </label>
         ))}
       </div>
+
+      <div className='product-features'>
+        <input 
+          type="text"
+          placeholder='Product Features (comma-separated)'
+          onChange={handleFeaturesChange}
+          className='product-features-input'
+        />
+      </div>
+
       <button className="sbt-btn" onClick={submitForm}>Submit</button>
     </div>
   );
