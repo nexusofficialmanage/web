@@ -11,6 +11,7 @@ function Page() {
   const searchParams = useSearchParams();
   const { user, error, isLoading } = useUser();
   const [images, setImages] = useState([]);
+  const [file, setFile] = useState([]);
   const [rating, setRating] = useState(0);
   const [tags, setTags] = useState([]);
   const ratings = [0, 1, 2, 3, 4, 5];
@@ -176,7 +177,10 @@ function Page() {
       <div className='product-images'>
         <input 
           type="file"
-          onChange={handleImageUpload}
+          onChange={(e)=>{
+            handleImageUpload
+            setFile(e.target.files?.[0]);
+          }}
           multiple
           className='image-upload'
         />

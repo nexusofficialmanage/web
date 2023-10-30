@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
       <UserProvider>
         <body>
           {!isMobileView && <DashBoard />}
-          <EdgeStoreProvider>{children}</EdgeStoreProvider>
+          {children}
           <Footer/>
           {isMobileView && <MobileNavbar />}
         </body>
