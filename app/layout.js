@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import MobileNavbar from "@/components/MobileNavbar";
 import DashBoard from "../components/DashBoard";
 import Footer from "../components/Footer";
+import {EdgeStoreProvider} from "../lib/edgestore";
 
 export default function RootLayout({ children }) {
   const [isMobileView, setIsMobileView] = useState(false);
@@ -26,7 +27,7 @@ export default function RootLayout({ children }) {
       <UserProvider>
         <body>
           {!isMobileView && <DashBoard />}
-          {children}
+          <EdgeStoreProvider>{children}</EdgeStoreProvider>
           <Footer/>
           {isMobileView && <MobileNavbar />}
         </body>

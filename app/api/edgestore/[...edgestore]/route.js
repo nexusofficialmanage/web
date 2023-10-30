@@ -1,5 +1,5 @@
-const { initEdgeStore } = require("@edgestore/server");
-const { createEdgeStoreNextHandler } = require("@edgestore/server/adapters/next/app");
+import { initEdgeStore } from "@edgestore/server";
+import { createEdgeStoreNextHandler } from "@edgestore/server/adapters/next/app";
 
 const es = initEdgeStore.create();
 
@@ -11,6 +11,6 @@ const handler = createEdgeStoreNextHandler({
   router: edgeStoreRouter,
 });
 
-module.exports = { GET: handler, POST: handler };
-
-module.exports.EdgeStoreRouter = edgeStoreRouter;
+export const GET = handler;
+export const POST = handler;
+export const EdgeStoreRouter = edgeStoreRouter;
