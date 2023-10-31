@@ -1,17 +1,30 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { use, useState } from 'react';
 import "./page.css";
 import ReactImageMagnify from 'react-image-magnify';
 import { useParams } from 'next/navigation';
+import ProductRating from '@/components/ProductRating';
+import { useDispatch, useSelector } from 'react-redux';
+import AddToCart from "@/components/AddToCart";
+
 
 function ProductDesc() {
   const productJS = localStorage.getItem('product');
   const product = JSON.parse(productJS);
+  const dispatch = useDispatch();
   console.log(product);
   console.log('Product Name:', product.productName);
   console.log('Product ID:', product.productId);
   const [prodimg, setImg] = useState(product.images[0]);
+
+  const addToCartHandler = (product,qty) => {
+    dispatch(addToCart({...product,qty}));
+  }
+
+  const removeFromCartHandler = (id) => {
+    dispatch(removeFromCart(id));
+  }
 
   const hoverHandler = (image,i) => {
     setImg(image);
@@ -88,8 +101,10 @@ function ProductDesc() {
 
             <div className='pricing-n-rating'>
               <h3 className='product-price'><span>Price:</span>{product.price}</h3>
-              <h3 className='product-rating'>Rating: {product.rating}</h3>
+              <ProductRating className="product-rating" rate={product.rating} count={product.reviews.length}/>
             </div>
+
+            <AddToCart showQty={false} product={product} increasePerClick={true} />
 
             <div className='pricing-details'>
               <div className='det-prod'>

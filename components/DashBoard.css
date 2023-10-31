@@ -5,6 +5,7 @@
     flex-direction: row;
     justify-content: space-between; 
     padding: 8px;
+    z-index:999;
     font-family: 'Cormorant Garamond';
 }
 

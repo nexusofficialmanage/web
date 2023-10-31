@@ -178,12 +178,19 @@ function Page() {
         <input 
           type="file"
           onChange={(e)=>{
-            handleImageUpload
-            setFile(e.target.files?.[0]);
+            handleImageUpload(e);
+            setFile(e.target.files[0]);
           }}
           multiple
           className='image-upload'
         />
+        <div className='image-list-preview'>
+          {images.map((file, i) => (
+            <div key={i} className='image-container-preview'>
+              <img src={file} className='image' />
+            </div>
+          ))}
+        </div>
       </div>
       <div className='product-name'>
         <input 

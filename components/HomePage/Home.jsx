@@ -4,6 +4,7 @@ import './Home.css'
 import Hero from './Hero';
 import ShopCard from './ShopCard';
 import axios from 'axios';
+
 // import ShopData from "./data/ShopData";
 
 const Home = () => {
@@ -20,6 +21,8 @@ const Home = () => {
   //     </>
   //   );
   // };
+
+
 
   const [allShops, setAllShops] = useState([]);
 

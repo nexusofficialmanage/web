@@ -1,0 +1,15 @@
+.cart-side-bar{
+    position: fixed;
+    top: 4rem;
+    right: 0;
+    width: 20%;
+    height: 100%;
+    background-color: grey;
+    z-index: 999;
+    /* transform: translateX(100%); */
+    transition: transform 0.3s ease-in-out;
+}
+
+.cart-status{
+    padding: 10rem;
+}

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import MobileNavbar from "@/components/MobileNavbar";
 import DashBoard from "../components/DashBoard";
 import Footer from "../components/Footer";
+import { StoreProvider } from '@/redux/StoreProvider';
 
 export default function RootLayout({ children }) {
   const [isMobileView, setIsMobileView] = useState(false);
@@ -24,12 +25,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <UserProvider>
+        <StoreProvider>
         <body>
           {!isMobileView && <DashBoard />}
           {children}
           <Footer/>
           {isMobileView && <MobileNavbar />}
+          
         </body>
+        </StoreProvider>
       </UserProvider>
     </html>
   );

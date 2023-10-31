@@ -97,6 +97,20 @@ input[type="radio"] {
   cursor: pointer;
 }
 
+.image-list-preview{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-container-preview img{
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  border-radius: 8px;
+}
+
 @media only screen and (max-width: 840px) {
   .product-details {
     margin: 0 auto;
